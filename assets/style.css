@@ -1,0 +1,869 @@
+:root{
+  --concrete:#d2d6d0;
+  --concrete-2:#c7ccc5;
+  --concrete-3:#b4bab4;
+  --steel:#2b3639;
+  --steel-2:#3f4d50;
+  --ink:#161f1e;
+  --ink-soft:#4b5654;
+  --tray:#f0b310;
+  --tray-edge:#a8770a;
+  --alarm:#e03131;
+  --glove:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2738%27%20height%3D%2744%27%20viewBox%3D%270%200%2038%2044%27%3E%3Cg%20fill%3D%27%23123a5e%27%20stroke%3D%27%23123a5e%27%20stroke-width%3D%274%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%2711%27%20y%3D%275%27%20width%3D%278%27%20height%3D%2719%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2718%27%20y%3D%2715%27%20width%3D%277%27%20height%3D%2711%27%20rx%3D%273.5%27%2F%3E%3Crect%20x%3D%2723%27%20y%3D%2717%27%20width%3D%277%27%20height%3D%2711%27%20rx%3D%273.5%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%2720%27%20width%3D%278%27%20height%3D%2712%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%2720%27%20width%3D%2722%27%20height%3D%2716%27%20rx%3D%276%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%234aa3f0%27%3E%3Crect%20x%3D%2711%27%20y%3D%275%27%20width%3D%278%27%20height%3D%2719%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2718%27%20y%3D%2715%27%20width%3D%277%27%20height%3D%2711%27%20rx%3D%273.5%27%2F%3E%3Crect%20x%3D%2723%27%20y%3D%2717%27%20width%3D%277%27%20height%3D%2711%27%20rx%3D%273.5%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%2720%27%20width%3D%278%27%20height%3D%2712%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%2720%27%20width%3D%2722%27%20height%3D%2716%27%20rx%3D%276%27%2F%3E%3C%2Fg%3E%3Crect%20x%3D%277%27%20y%3D%2731%27%20width%3D%2724%27%20height%3D%279%27%20rx%3D%273%27%20fill%3D%27%232f7fd6%27%2F%3E%3C%2Fsvg%3E") 15 4, pointer;
+  --glove-grab:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2738%27%20height%3D%2744%27%20viewBox%3D%270%200%2038%2044%27%3E%3Cg%20fill%3D%27%23123a5e%27%20stroke%3D%27%23123a5e%27%20stroke-width%3D%274%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%279%27%20y%3D%2713%27%20width%3D%278%27%20height%3D%2711%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2716%27%20y%3D%2710%27%20width%3D%278%27%20height%3D%2713%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2722%27%20y%3D%2713%27%20width%3D%278%27%20height%3D%2711%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%2720%27%20width%3D%279%27%20height%3D%2710%27%20rx%3D%274.5%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%2718%27%20width%3D%2722%27%20height%3D%2717%27%20rx%3D%277%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27%234aa3f0%27%3E%3Crect%20x%3D%279%27%20y%3D%2713%27%20width%3D%278%27%20height%3D%2711%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2716%27%20y%3D%2710%27%20width%3D%278%27%20height%3D%2713%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%2722%27%20y%3D%2713%27%20width%3D%278%27%20height%3D%2711%27%20rx%3D%274%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%2720%27%20width%3D%279%27%20height%3D%2710%27%20rx%3D%274.5%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%2718%27%20width%3D%2722%27%20height%3D%2717%27%20rx%3D%277%27%2F%3E%3C%2Fg%3E%3Crect%20x%3D%277%27%20y%3D%2731%27%20width%3D%2724%27%20height%3D%279%27%20rx%3D%273%27%20fill%3D%27%232f7fd6%27%2F%3E%3C%2Fsvg%3E") 19 13, grabbing;}
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+/* the attribute has to win over any display rule below it, or a panel with
+   display:flex stays on screen when the code hides it */
+[hidden]{display:none !important}
+body{
+  margin:0;background:var(--concrete);color:var(--ink);
+  font-family:'Barlow',system-ui,sans-serif;font-size:16px;line-height:1.5;
+  font-variant-numeric:tabular-nums;
+  cursor:var(--glove);
+}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+button,.card,.stage{cursor:var(--glove)}
+.card.lift,.card:active{cursor:var(--glove-grab)}
+
+/* ---- signage ---- */
+.signage{
+  display:flex;align-items:baseline;gap:1.1rem;flex-wrap:wrap;
+  background:var(--steel);color:#e6ebe9;padding:.45rem clamp(1rem,3vw,2rem);
+  border-bottom:3px solid var(--tray);
+}
+.mark{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.35rem;line-height:1}
+.belt-count,.clock{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:1rem;color:#a9b6b4}
+.belt-count{margin-left:auto}
+.clock{min-width:3.2rem;text-align:right;color:#e6ebe9}
+.scoreboard{display:flex;align-items:baseline;gap:.4rem}
+.scoreboard-label{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:1rem;color:#a9b6b4}
+.scoreboard-num{
+  display:inline-block;min-width:2.4ch;text-align:right;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.45rem;line-height:1;color:var(--tray);
+}
+.scoreboard-num.bump{animation:bump .42s ease-out}
+@keyframes bump{0%{transform:scale(1)}35%{transform:scale(1.3)}100%{transform:scale(1)}}
+.mute{
+  border:1px solid #5b6a6c;background:transparent;color:#a9b6b4;border-radius:3px;
+  padding:.1rem .5rem;font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:.9rem;
+}
+.mute:hover{background:rgba(255,255,255,.08);color:#e6ebe9}
+.mute.off{color:#6f7c7e;border-color:#3f4d50;text-decoration:line-through}
+
+/* ---- queue ---- */
+.beltbar{background:var(--concrete-3);padding:.4rem clamp(1rem,3vw,2rem);overflow-x:auto}
+.belt{display:flex;gap:4px;min-height:22px;align-items:center}
+.qtray{
+  position:relative;flex:0 0 auto;width:32px;height:21px;border-radius:3px;
+  background:var(--tray);border:1px solid var(--tray-edge);
+  box-shadow:inset 0 0 0 2px rgba(0,0,0,.09);
+}
+.qtray.next{outline:2px solid var(--steel);outline-offset:1px}
+.qtray[data-bounces="1"]::after,.qtray[data-bounces="2"]::after{
+  content:attr(data-bounces);position:absolute;inset:0;display:grid;place-items:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;color:var(--tray-edge);
+}
+.belt-empty{font-family:'Barlow Condensed',sans-serif;font-size:1rem;color:var(--ink-soft)}
+
+/* ---- page ---- */
+.lane-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) 246px;gap:1rem;
+  padding:.7rem clamp(.75rem,2vw,1.5rem) 1rem;align-items:start;max-width:1680px;
+}
+@media(max-width:960px){.lane-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- stage ----
+   Landscape, because a window is usually wider than it is tall and the stage
+   is fitted to both. Two lanes facing each other across one bench; trays run
+   left to right in both of them. */
+.stagewrap{position:relative;width:100%;overflow:hidden;border-radius:6px}
+.stage{
+  position:absolute;top:0;left:0;width:1360px;height:712px;transform-origin:top left;
+  background:var(--concrete-2);
+  background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);
+  background-size:7px 7px;
+  border:1px solid var(--concrete-3);border-radius:6px;overflow:hidden;
+  touch-action:none;
+}
+
+.lane{position:absolute;left:0;right:0}
+.lane-b{top:0;height:154px}
+.lane-you{top:586px;height:154px}
+
+.conveyor{position:absolute;left:0;right:0;height:118px;z-index:0;background:#333f42;border-top:2px solid #202a2c;border-bottom:2px solid #202a2c}
+.lane-b .conveyor{top:0}
+.lane-you .conveyor{top:36px}
+.rollers{position:absolute;inset:0;background:repeating-linear-gradient(90deg,#3d4a4d 0 22px,#2c3739 22px 26px)}
+.running-b .lane-b .rollers{animation:roll .7s linear infinite}
+.running-you .lane-you .rollers{animation:roll .7s linear infinite}
+@keyframes roll{to{background-position-x:26px}}
+
+/* where a passed tray rests, one per lane */
+.donespot{
+  position:absolute;left:1146px;width:188px;height:116px;
+  border:2px dashed rgba(255,255,255,.18);border-radius:8px;
+}
+.lane-b .donespot{top:1px}
+.lane-you .donespot{top:37px}
+
+.arch{position:absolute;left:290px;width:212px;height:154px;z-index:5}
+.lane-b .arch{top:0}
+.lane-you .arch{top:0}
+.arch-mouth{position:absolute;left:0;right:0;height:118px;background:#4a585b;border:3px solid #26302f;border-radius:6px}
+.lane-b .arch-mouth{top:0}
+.lane-you .arch-mouth{bottom:0}
+.arch-mouth::before,.arch-mouth::after{content:"";position:absolute;top:6px;bottom:6px;width:16px;background:#1d2526;border-radius:3px}
+.arch-mouth::before{left:6px}
+.arch-mouth::after{right:6px}
+.arch-head{
+  position:absolute;left:14px;right:14px;height:36px;background:#26302f;border-radius:5px;
+  display:flex;align-items:center;gap:10px;padding:0 12px;
+}
+.lane-b .arch-head{bottom:0}
+.lane-you .arch-head{top:0}
+.arch-name{font-family:'Barlow Condensed',sans-serif;font-size:1rem;color:#93a3a1}
+.arch-lamp{width:36px;height:13px;border-radius:7px;background:#3c4a4b;border:1px solid #151c1d}
+.arch-lamp.red{background:var(--alarm);box-shadow:0 0 18px 4px rgba(224,49,49,.65)}
+.arch-lamp.flash{animation:flash .5s steps(2,end) 6}
+@keyframes flash{50%{background:#3c4a4b;box-shadow:none}}
+
+.tray{
+  position:absolute;left:-230px;width:180px;height:108px;
+  background:var(--tray);border:2px solid var(--tray-edge);border-radius:7px;
+  box-shadow:inset 0 0 0 5px rgba(0,0,0,.1);
+  transition:left 1.15s cubic-bezier(.3,.05,.2,1), top .85s cubic-bezier(.35,0,.25,1);
+}
+.tray.waiting{filter:brightness(.93) saturate(.9)}
+.tray.done{filter:brightness(.82) saturate(.7)}
+.tray-lip{position:absolute;inset:7px;border:2px dashed rgba(0,0,0,.18);border-radius:4px}
+
+/* ---- the seize trays ----
+   One each, side by side in the middle of the bench, and what goes in stays
+   in: seized cards are laid out in them for the rest of the shift so both
+   officers can see how the other is doing. */
+.seize{
+  position:absolute;top:292px;width:400px;height:116px;
+  border:2px solid #9aa39d;border-radius:8px;background:rgba(255,255,255,.26);
+  box-shadow:inset 0 0 0 5px rgba(0,0,0,.05);
+}
+.seize-b{left:270px}
+.seize-you{left:700px;border-color:var(--steel);background:rgba(255,255,255,.38)}
+.seize-tag{
+  position:absolute;left:10px;top:2px;
+  font-family:'Barlow Condensed',sans-serif;font-size:.95rem;color:#6d7873;
+}
+.seize-you .seize-tag{color:var(--ink-soft);font-weight:500}
+.seize-n{
+  position:absolute;right:10px;top:0;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.1rem;color:#6d7873;
+}
+.seize-you.hot{border-color:var(--alarm);background:rgba(224,49,49,.14)}
+
+/* ---- the wall ----
+   One notice on the bench itself: the standing list of what is forbidden. The
+   stolen-goods board moved off the stage and into the sidebar, because it is
+   read, not handled, and it was taking bench space from the half of the stage
+   you actually work in. */
+.notice{
+  position:absolute;left:12px;width:240px;
+  background:#e7e3d6;border:2px solid #b6ae98;border-radius:6px;
+  box-shadow:0 3px 0 rgba(0,0,0,.12), inset 0 0 0 4px rgba(255,255,255,.4);
+  padding:3px 6px 5px;
+}
+.notice-signs{top:150px;height:152px}
+.notice-banned{top:312px;height:196px;text-align:center}
+.notice-head{
+  margin:0 0 3px;display:flex;justify-content:space-between;align-items:baseline;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.02rem;
+  color:#6a5f46;letter-spacing:.03em;text-transform:uppercase;line-height:1.2;
+  border-bottom:1px solid #c4bca6;padding-bottom:2px;
+}
+.notice-head span{font-size:.88rem;color:#8a6b2e;letter-spacing:0}
+.banned-chart{width:226px;display:block;margin:0 auto}
+.notice-foot{
+  margin:1px 0 0;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;
+  color:#8a7f64;letter-spacing:.02em;
+}
+.pane-board{border-left-color:#b6ae98;background:#e7e3d6}
+.board-worth{float:right;font-size:.95rem;color:#8a6b2e}
+.board-list{display:flex;flex-direction:column;gap:5px;margin-top:.45rem}
+.poster{
+  display:flex;align-items:center;gap:8px;height:58px;
+  background:#f4f1e7;border:1px solid #cdc5ae;border-radius:4px;padding:3px 7px;
+}
+.ptile{position:relative;flex:0 0 auto;width:56px;height:50px;overflow:hidden}
+.ptile img{position:absolute;max-width:none}
+.poster-name{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;
+  line-height:1.1;color:#3c372a;
+}
+.poster.found{background:#dfe9df;border-color:#8fae92}
+.poster.found .poster-name{color:#2f5c3a;text-decoration:line-through}
+.poster-got{
+  display:block;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:.82rem;color:#2f7a4b;letter-spacing:.03em;text-decoration:none;
+}
+
+/* ---- the magnifier ----
+   A plate at the right-hand end of each bench. Hold a card over yours and it
+   is shown at two and a bit times the size, which is the difference between
+   seeing a screwdriver and seeing a smudge. */
+.lens{
+  position:absolute;left:1152px;width:196px;height:123px;
+  border:2px dashed #8d9691;border-radius:8px;background:rgba(255,255,255,.2);
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;
+}
+.lens-b{top:160px}
+.lens-you{top:418px}
+.lens-tag{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;color:#7d8782}
+.lens.hot{border-style:solid;border-color:var(--steel);background:rgba(255,255,255,.5)}
+.lensview{
+  position:absolute;left:1146px;width:208px;height:290px;z-index:70;
+  background:#eef1ec;border:3px solid var(--steel);border-radius:10px;
+  box-shadow:0 14px 30px rgba(0,0,0,.35);padding:6px;
+}
+.lensview-b{top:78px}
+.lensview-you{top:336px}
+.lensview img{width:100%;height:100%;object-fit:contain;display:block}
+.lensview img.flip{transform:rotate(180deg)}
+
+/* ---- cards ----
+   Clear stock. Only the printed object is opaque, so a card above hides part
+   of a card below and the stack reads as a jumbled bag. */
+.card{
+  position:absolute;touch-action:none;
+  border:none;padding:0;background:none;
+}
+.card.item{
+  width:88px;height:123px;border-radius:5px;overflow:hidden;
+  background:rgba(255,255,255,.11);
+  box-shadow:inset 0 0 0 1px rgba(22,34,31,.15);
+}
+.card.item img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+.card.item img.flip{transform:rotate(180deg)}
+.card.item:hover{box-shadow:inset 0 0 0 2px rgba(22,34,31,.45)}
+.card.lift{
+  background:rgba(255,255,255,.62);
+  box-shadow:0 12px 24px rgba(0,0,0,.34), inset 0 0 0 1px rgba(22,34,31,.35);
+}
+.card.settle{transition:left .32s ease,top .32s ease,transform .32s ease}
+.card.stowed{pointer-events:none;transform-origin:0 0;box-shadow:none;background:rgba(255,255,255,.14)}
+.card.stowed:hover{box-shadow:none}
+.card.binned{transition:opacity .3s,transform .3s;opacity:0;transform:scale(.7)}
+
+.card.lid{
+  width:88px;height:123px;border-radius:5px;overflow:hidden;
+  box-shadow:0 3px 0 rgba(0,0,0,.35), 0 8px 16px rgba(0,0,0,.28);
+}
+.card.lid img{width:100%;height:100%;display:block;object-fit:cover;pointer-events:none;user-select:none}
+.card.lid.lift{box-shadow:0 14px 26px rgba(0,0,0,.4)}
+
+/* Officer B's cards are across the bench. You can watch them, you cannot
+   reach them — no pointer events, ever. */
+.card.theirs{pointer-events:none !important;cursor:default}
+.card.theirs.item:hover{box-shadow:inset 0 0 0 1px rgba(22,34,31,.15)}
+
+/* A suitcase lies flat and lengthways in a tray. The card art is portrait, so
+   the box is turned and the image inside it turned with it. */
+.tray-case{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:123px;height:88px;border-radius:5px;overflow:hidden;
+  box-shadow:0 3px 0 rgba(0,0,0,.35), 0 6px 12px rgba(0,0,0,.25);
+}
+.tray-case img{
+  position:absolute;left:50%;top:50%;width:88px;height:123px;display:block;
+  object-fit:cover;transform:translate(-50%,-50%) rotate(90deg);
+}
+
+/* a number that lifts off whatever earned it */
+.pop{
+  position:absolute;z-index:40;pointer-events:none;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.5rem;line-height:1;
+  color:#fff;background:var(--steel);padding:.12rem .5rem;border-radius:4px;
+  box-shadow:0 4px 10px rgba(0,0,0,.3);
+  animation:pop 1.05s cubic-bezier(.2,.7,.3,1) forwards;
+}
+.pop.good{background:#1f7a45}
+.pop.bad{background:var(--alarm)}
+.pop.theirs{background:var(--steel-2);font-size:1.2rem}
+@keyframes pop{
+  0%{opacity:0;transform:translateY(8px) scale(.8)}
+  14%{opacity:1;transform:translateY(0) scale(1.08)}
+  28%{transform:translateY(-3px) scale(1)}
+  100%{opacity:0;transform:translateY(-46px) scale(.95)}
+}
+
+/* ---- the hold ----
+   Only your half of the bench freezes. B keeps working, which is the point. */
+.freeze{
+  position:absolute;left:260px;right:0;top:412px;bottom:0;z-index:60;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.25rem;text-align:center;
+  background:rgba(224,49,49,.17);border:5px solid var(--alarm);border-radius:6px;
+}
+.freeze-head{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.9rem;color:#8c1d1d;line-height:1}
+.freeze-why{font-size:.95rem;color:#6d2020}
+.freeze-count{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.5rem;color:#8c1d1d}
+
+/* ---- controls ---- */
+.controls{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:.7rem 0 0}
+.controls button{
+  border:2px solid var(--ink-soft);background:transparent;color:var(--ink);
+  border-radius:4px;padding:.45rem 0;min-width:8.5rem;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.2rem;
+  letter-spacing:.02em;
+}
+.controls button:hover:not(:disabled){filter:brightness(1.06)}
+.controls button:disabled{opacity:.32;cursor:default}
+.controls button.go{background:var(--tray);border-color:var(--tray-edge);color:#241a01}
+.controls button.pass{background:#2f7a4b;border-color:#1d5533;color:#eafaf0}
+.controls button.check{background:var(--steel);border-color:var(--ink);color:#e6ebe9}
+.controls button.ghost{
+  min-width:0;padding:.45rem .9rem;font-size:.95rem;font-weight:500;
+  border-width:1px;border-style:dashed;color:var(--ink-soft);
+}
+.controls button.active{box-shadow:0 0 0 3px rgba(43,54,57,.25)}
+.controls .again button{min-width:0}
+.prompt{margin:.35rem auto 0;color:var(--ink-soft);font-size:.88rem;max-width:80ch;min-height:2.4em;text-align:center}
+.prompt strong{color:var(--ink);font-weight:600}
+
+/* ---- tally ---- */
+.tally{display:grid;gap:.6rem}
+.pane{background:var(--concrete-2);border-radius:6px;padding:.7rem .85rem;border-left:5px solid var(--steel)}
+.pane-opp{border-left-color:var(--concrete-3)}
+.pane-who{margin:0;font-family:'Barlow Condensed',sans-serif;font-size:1rem;color:var(--ink-soft)}
+.pane-score{margin:0;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:2.1rem;line-height:1}
+.pane-lines{display:flex;gap:1rem;margin:.3rem 0 0}
+.pane-lines div{display:flex;gap:.35rem}
+.pane-lines dt{color:var(--ink-soft);font-size:.85rem}
+.pane-lines dd{margin:0;font-size:.85rem;font-weight:600}
+.pane-doing{margin:.35rem 0 0;font-size:.8rem;color:var(--ink-soft);font-style:italic}
+
+/* ---- result ---- */
+.result{padding:0 clamp(1rem,3vw,2rem) 3rem;max-width:1680px}
+.result-inner{background:var(--steel);color:#e6ebe9;border-radius:6px;padding:1.5rem clamp(1rem,3vw,2rem)}
+.result h2{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:2.2rem;margin:0 0 .25rem;line-height:1.1}
+.result .verdict{margin:0 0 1.5rem;color:#a9b6b4;max-width:60ch}
+.sheets{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.sheet{background:#222d2f;border-radius:4px;padding:1rem 1.15rem}
+.sheet h3{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:1.25rem;margin:0 0 .6rem;color:#c9d3d1}
+.sheet table{width:100%;border-collapse:collapse;font-size:.92rem}
+.sheet td{padding:.25rem 0;color:#b7c3c1}
+.sheet td:last-child{text-align:right;font-weight:600;color:#e6ebe9}
+.sheet tr.neg td:last-child{color:#ff8383}
+.sheet tr.total td{border-top:1px solid #46565a;padding-top:.5rem;font-size:1.35rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;color:#fff}
+.missed{margin:.75rem 0 0;font-size:.85rem;color:#ff9a9a}
+.result .again{margin-top:1.5rem}
+.colophon{padding:0 clamp(1rem,3vw,2rem) 1.5rem;max-width:60ch}
+.colophon p{margin:0;font-size:.8rem;color:var(--ink-soft)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important}
+  .tray{transition-duration:.2s}
+}
+
+/* ================= phone ==================
+   On a touch screen the page chrome is the enemy: a header, a belt bar, a
+   sidebar and a prompt eat two thirds of a phone's height and leave the bench
+   scaled to nothing. So on a coarse pointer all of it goes, the stage takes
+   the whole screen, and the few numbers that matter sit over it. */
+
+.hud, .sheetover, .rotate { display: none; }
+
+body.compact {
+  position: fixed; inset: 0; overflow: hidden;
+  overscroll-behavior: none; -webkit-user-select: none; user-select: none;
+}
+body.compact .signage,
+body.compact .beltbar,
+body.compact .tally,
+body.compact .colophon,
+body.compact .prompt { display: none; }
+body.compact .lane-grid { display: block; padding: 0; max-width: none; gap: 0; }
+body.compact .stagewrap { border-radius: 0; }
+body.compact .stage { border-radius: 0; border: none; }
+
+body.compact .hud {
+  display: flex; align-items: center; gap: .55rem;
+  position: fixed; z-index: 80; left: 0; right: 0;
+  top: calc(env(safe-area-inset-top, 0px) + 4px);
+  padding: 0 calc(env(safe-area-inset-left, 0px) + 8px) 0 calc(env(safe-area-inset-right, 0px) + 8px);
+  font-family: 'Barlow Condensed', sans-serif; pointer-events: none;
+}
+.hud-score {
+  display: flex; align-items: baseline; gap: .2rem;
+  background: rgba(22, 31, 30, .62); color: #fff;
+  border-radius: 5px; padding: .1rem .4rem;
+}
+.hud-score b { font-size: 1.15rem; font-weight: 600; }
+.hud-score i { font-style: normal; font-size: .78rem; color: #a9b6b4; }
+.hud-belt { background: rgba(22, 31, 30, .5); color: #cfd8d5; border-radius: 5px; padding: .12rem .4rem; font-size: .82rem; }
+.hud-line { flex: 1 1 auto; color: #2e3a38; font-size: .82rem; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.hud-btn {
+  pointer-events: auto; touch-action: manipulation;
+  background: rgba(22, 31, 30, .62); color: #e6ebe9; border: 1px solid #5b6a6c;
+  border-radius: 5px; padding: .18rem .5rem;
+  font-family: 'Barlow Condensed', sans-serif; font-size: .88rem;
+}
+.hud-btn.off { text-decoration: line-through; color: #93a09f; }
+
+body.compact .controls {
+  position: fixed; z-index: 80; left: 50%; transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 5px);
+  margin: 0; gap: .4rem; padding: .3rem;
+  background: rgba(22, 31, 30, .5); border-radius: 10px;
+}
+body.compact .controls button {
+  min-width: 5.4rem; padding: .5rem .3rem; font-size: 1.05rem;
+  touch-action: manipulation;
+}
+body.compact .controls button.ghost { min-width: 0; padding: .5rem .6rem; font-size: .85rem; color: #cfd8d5; }
+
+body.compact .result { padding: 1rem; max-width: none; }
+body.compact .result-inner { max-height: 88dvh; overflow-y: auto; }
+
+/* the stolen board, on demand */
+body.compact .sheetover {
+  display: flex; position: fixed; inset: 0; z-index: 90;
+  align-items: center; justify-content: center; padding: 1rem;
+  background: rgba(22, 31, 30, .72);
+}
+.sheetover-inner {
+  background: #e7e3d6; border-radius: 8px; padding: .7rem .8rem;
+  width: min(340px, 92vw); max-height: 86dvh; overflow-y: auto;
+}
+.sheetover-head {
+  margin: 0 0 .4rem; display: flex; justify-content: space-between; align-items: baseline;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-transform: uppercase;
+  color: #6a5f46; letter-spacing: .03em;
+}
+.sheetover-head span { color: #8a6b2e; letter-spacing: 0; }
+.sheetover-doing { margin: .5rem 0 .6rem; font-size: .85rem; font-style: italic; color: #6a5f46; }
+.sheetover .hud-btn { width: 100%; padding: .45rem; font-size: 1rem; }
+
+/* portrait is unplayable at this aspect, so say so rather than shrink to nothing */
+body.compact.portrait .rotate {
+  display: flex; position: fixed; inset: 0; z-index: 95;
+  flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
+  background: var(--steel); color: #e6ebe9; text-align: center; padding: 2rem;
+}
+.rotate p { margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.6rem; }
+.rotate span { font-size: .9rem; color: #a9b6b4; }
+
+/* ================= the start screen ================= */
+.menu{
+  position:fixed;inset:0;z-index:120;overflow-y:auto;
+  background:var(--steel);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 2px, transparent 2px 7px),
+    radial-gradient(120% 90% at 50% 0%, #3a474a 0%, #222c2e 70%);
+  color:#e6ebe9;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(1rem,4vw,2.5rem);
+}
+.menu-inner{width:min(940px,100%);text-align:center}
+.menu-kicker{
+  margin:0;font-family:'Barlow Condensed',sans-serif;font-size:.95rem;
+  letter-spacing:.34em;text-transform:uppercase;color:#8d9d9b;
+}
+.menu-title{
+  margin:.15rem 0 0;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:clamp(3rem,11vw,6.5rem);line-height:.9;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--tray);
+  text-shadow:0 4px 0 #8a6208, 0 10px 26px rgba(0,0,0,.45);
+}
+.menu-sub{
+  margin:.5rem 0 0;font-family:'Barlow Condensed',sans-serif;font-size:clamp(.85rem,2.2vw,1.1rem);
+  letter-spacing:.24em;text-transform:uppercase;color:#aab8b6;
+}
+.menu-sub::before,.menu-sub::after{content:"—";margin:0 .6rem;color:#5d6c6e}
+.menu-modes{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:.8rem;margin:clamp(1.2rem,4vw,2.2rem) 0 1rem;text-align:left;
+}
+.mode{
+  display:flex;flex-direction:column;gap:.3rem;
+  background:#222d2f;border:2px solid #45565a;border-radius:8px;
+  padding:.9rem 1rem 1rem;color:inherit;text-align:left;
+  touch-action:manipulation;transition:border-color .15s, background .15s, transform .1s;
+}
+.mode:hover{border-color:var(--tray);background:#273436}
+.mode:active{transform:translateY(1px)}
+.mode-name{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.5rem;
+  line-height:1;color:var(--tray);
+}
+.mode-tag{
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;letter-spacing:.06em;
+  text-transform:uppercase;color:#8fa09e;
+}
+.mode-body{font-size:.86rem;line-height:1.45;color:#b9c5c3;margin-top:.2rem}
+.menu-foot{margin:0;font-size:.8rem;color:#7d8c8a;text-align:center}
+
+.budget{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;
+  color:var(--tray);background:rgba(0,0,0,.25);border-radius:4px;padding:.05rem .45rem;
+}
+.clock.low{color:#ff9a9a}
+.clock.out{color:var(--alarm)}
+
+body.compact .menu-modes{grid-template-columns:repeat(3,1fr);gap:.5rem}
+body.compact .mode{padding:.55rem .6rem}
+body.compact .mode-body{display:none}
+body.compact .menu-inner{width:min(940px,100%)}
+body.compact.portrait .menu{display:none}
+body.compact .hud-mode{background:rgba(22,31,30,.5);color:#cfd8d5;border-radius:5px;padding:.12rem .4rem;font-size:.82rem}
+
+/* ---- weight ----
+   With the lamp gone, the one honest thing you can know about a closed bag is
+   how heavy it is, because you are holding it. Three bands, deliberately
+   coarse: a heavy bag hides more, and it also costs more to work. */
+.weigh{
+  position:absolute;left:706px;top:602px;z-index:6;
+  display:flex;flex-direction:column;gap:2px;align-items:flex-start;
+  background:rgba(22,31,30,.72);border-radius:5px;padding:4px 7px;
+}
+.weigh-bars{display:flex;gap:3px}
+.weigh-bars i{display:block;width:13px;height:9px;border-radius:2px;background:#4d5c5e}
+.weigh-bars i.on{background:var(--tray)}
+.weigh-word{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.95rem;
+  letter-spacing:.08em;text-transform:uppercase;color:#dbe3e1;line-height:1;
+}
+
+/* ---- the briefing ----
+   The stolen list, once, in words. There is no board to check against later
+   and no picture at any point: the whole mechanic is that you have to carry
+   ten short descriptions in your head for the length of a shift. */
+.brief{
+  position:fixed;inset:0;z-index:130;overflow-y:auto;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(1rem,4vw,2rem);
+  background:rgba(18,25,26,.93);
+}
+.brief-inner{
+  width:min(560px,100%);background:#e7e3d6;border-radius:8px;
+  border:2px solid #b6ae98;box-shadow:0 20px 50px rgba(0,0,0,.5);
+  padding:1.1rem 1.3rem 1.2rem;
+}
+.brief-kicker{
+  margin:0;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;
+  letter-spacing:.3em;text-transform:uppercase;color:#8a7f64;
+}
+.brief-head{
+  margin:.1rem 0 .6rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:2.1rem;line-height:1;color:#3c372a;text-transform:uppercase;letter-spacing:.02em;
+}
+.brief-lede{margin:0 0 .5rem;color:#4a442f;font-size:.95rem;line-height:1.45}
+.brief-warn{
+  margin:0 0 .7rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:#a33c12;font-size:.95rem;
+}
+.brief-list{
+  margin:0 0 .8rem;padding:0;list-style:none;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.3rem .8rem;
+}
+.brief-list li{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.15rem;
+  color:#2f2b20;border-bottom:1px dotted #c4bca6;padding:.1rem 0;
+}
+.brief-score{margin:0 0 .5rem;font-size:.88rem;color:#4a442f}
+.brief-foot{margin:0 0 .8rem;font-size:.8rem;color:#8a7f64;font-style:italic}
+.brief-go{
+  width:100%;background:var(--tray);border:2px solid var(--tray-edge);color:#241a01;
+  border-radius:5px;padding:.6rem;touch-action:manipulation;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.25rem;
+}
+.brief-go:hover{background:#ffc528}
+
+/* ---- the tray clock ----
+   Ten seconds a bag, sitting on the tray so it is in the same place your eyes
+   already are. It goes red at three, and says CUT when the other officer
+   finishes first and takes the rest of your time with them. */
+.traytime{
+  position:absolute;left:706px;top:648px;z-index:8;
+  min-width:74px;text-align:center;
+  background:rgba(22,31,30,.82);border-radius:6px;padding:3px 8px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.6rem;
+  line-height:1.05;color:#e6ebe9;letter-spacing:.02em;
+}
+.traytime.urgent{background:var(--alarm);color:#fff;animation:tick .5s steps(2,end) infinite}
+@keyframes tick{50%{background:#9c2020}}
+
+/* ---- the menu, now that there is one game ---- */
+.menu-blurb{
+  margin:.9rem auto 0;max-width:54ch;font-size:.92rem;line-height:1.55;color:#b9c5c3;
+}
+/* two cards, equal width, equal height, buttons pinned to the bottom so the
+   pair reads as one block rather than two paragraphs of different lengths */
+.menu-modes-two{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;max-width:760px;margin:1.4rem auto 1.5rem;align-items:stretch;
+}
+@media(max-width:680px){.menu-modes-two{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- the day's amendments ----
+   Two signs on the wall, and they win. A ban makes an ordinary category
+   contraband; an OK makes a forbidden one legal. They are read at a glance or
+   not at all, so they are big and they are the first thing on the wall. */
+.sign-row{display:flex;gap:8px;justify-content:center;margin-top:2px}
+.sign{
+  display:flex;flex-direction:column;align-items:center;gap:1px;width:108px;
+  background:#f4f1e7;border:1px solid #cdc5ae;border-radius:5px;padding:3px 2px 2px;
+}
+.sign img{width:78px;height:78px;display:block}
+.sign b{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.82rem;
+  line-height:1.02;text-align:center;color:#3c372a;
+}
+.sign-ban b{color:#9c2626}
+.sign-ok b{color:#25703f}
+
+.brief-rules{
+  margin:0 0 .5rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;color:#6a5f46;font-size:.95rem;
+}
+.brief-signs{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:0 0 .9rem}
+.brief-sign{
+  display:flex;align-items:center;gap:.5rem;
+  background:#f4f1e7;border:1px solid #cdc5ae;border-radius:5px;padding:.35rem .5rem;
+}
+.brief-sign img{width:52px;height:52px;flex:0 0 auto}
+.brief-sign span{font-size:.8rem;line-height:1.25;color:#4a442f}
+.brief-sign b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1.02rem;color:#3c372a}
+.brief-sign.sign-ban b{color:#9c2626}
+.brief-sign.sign-ok b{color:#25703f}
+@media(max-width:520px){.brief-signs{grid-template-columns:1fr}}
+
+/* ---- two games, each with two lengths ---- */
+.mode-card{
+  display:flex;flex-direction:column;height:100%;
+  background:#222d2f;border:2px solid #45565a;border-radius:8px;
+  padding:1rem 1.1rem 1.1rem;text-align:left;
+}
+.mode-card .mode-name{font-size:1.4rem;line-height:1.1;margin-bottom:.15rem}
+.mode-card .mode-tag{margin-bottom:.5rem}
+.mode-card .mode-body{margin:0;min-height:5.2em}
+.mode-picks{display:flex;gap:.5rem;margin-top:auto;padding-top:.9rem}
+.mode-card .mode{
+  flex:1 1 0;min-width:0;border-radius:5px;padding:.55rem .4rem;background:#2d3b3e;
+  border:2px solid #56696d;text-align:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;color:#e6ebe9;
+}
+.mode-card .mode:hover{border-color:var(--tray);background:#35464a;color:#fff}
+
+/* ---- posting a sign ----
+   The bench stops, three signs off the unposted pile, pick one. It goes on the
+   wall for the rest of the shift and it binds both officers. */
+.draft{
+  position:fixed;inset:0;z-index:140;overflow-y:auto;
+  display:flex;align-items:center;justify-content:center;padding:clamp(1rem,4vw,2rem);
+  background:rgba(18,25,26,.94);
+}
+.draft-inner{
+  width:min(760px,100%);background:#e7e3d6;border:2px solid #b6ae98;border-radius:8px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);padding:1.1rem 1.3rem 1.3rem;
+}
+.draft-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem;margin-top:.8rem}
+.draft-pick{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;text-align:center;
+  background:#f4f1e7;border:2px solid #cdc5ae;border-radius:6px;padding:.7rem .6rem;
+  touch-action:manipulation;
+}
+.draft-pick:hover{border-color:var(--tray);background:#fffdf4}
+.draft-pick img{width:96px;height:96px}
+.draft-pick b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;color:#3c372a}
+.draft-pick span{font-size:.82rem;line-height:1.3;color:#4a442f}
+
+/* the wall gets crowded once people start posting */
+.sign-row-many{flex-wrap:wrap;gap:4px}
+.sign-row-many .sign{width:52px;padding:2px}
+.sign-row-many .sign img{width:46px;height:46px}
+
+.toast{
+  position:absolute;left:50%;top:250px;transform:translateX(-50%);z-index:90;
+  background:rgba(22,31,30,.9);color:#e6ebe9;border-radius:6px;padding:.4rem .8rem;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.2rem;
+  animation:pop 2.6s ease-out forwards;
+}
+.toast.mine{background:#1f7a45}
+
+/* the whole unposted pile, not a hand of three */
+.draft-inner{width:min(1000px,100%)}
+.draft-list{
+  grid-template-columns:repeat(auto-fill,minmax(112px,1fr));
+  gap:.45rem;max-height:58dvh;overflow-y:auto;padding:.2rem;
+}
+.draft-pick{padding:.45rem .3rem;gap:.15rem}
+.draft-pick img{width:62px;height:62px}
+.draft-pick b{font-size:.95rem;line-height:1.05}
+.draft-count{color:#8a7f64;font-style:italic}
+
+/* ---- a wall that fills up ----
+   Signs keep arriving all shift, so they shrink in steps rather than spilling
+   off the board. Every one stays visible; that is the whole point of it. */
+.notice-signs{top:150px;height:250px;overflow:hidden}
+.notice-banned{top:410px;height:150px}
+.notice-banned .banned-chart{width:182px}
+.sign-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-content:flex-start;margin-top:3px}
+.sign-two .sign{width:108px}
+.sign-two .sign img{width:78px;height:78px}
+.sign-six .sign{width:70px;padding:2px}
+.sign-six .sign img{width:64px;height:64px}
+.sign-twelve .sign{width:52px;padding:1px}
+.sign-twelve .sign img{width:48px;height:48px}
+.sign-many{gap:3px}
+.sign-many .sign{width:38px;padding:1px;border-radius:4px}
+.sign-many .sign img{width:34px;height:34px}
+#signCount{font-size:.82rem;color:#8a7f64;letter-spacing:0;text-transform:none}
+
+/* ---- the permit, and what people do with it ---- */
+.controls button.smuggle{
+  border-style:solid;border-color:#8a6b2e;background:#3a3222;color:#f0d79a;
+  min-width:0;padding:.55rem .9rem;font-size:1rem;font-weight:600;
+}
+.controls button.smuggle:hover{background:#4a4029;color:#fff}
+.brief-permit{
+  display:flex;gap:.7rem;align-items:flex-start;margin:0 0 .8rem;
+  background:#efe7cf;border:2px dashed #b08a3a;border-radius:6px;padding:.6rem .7rem;
+}
+.brief-permit img{width:64px;height:64px;flex:0 0 auto}
+.brief-permit span{font-size:.84rem;line-height:1.35;color:#4a442f}
+.brief-permit b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;color:#6d5312}
+
+/* ---- the policy shift does not need a scoreboard ----
+   The win condition is the seizure target and both of those live on the seize
+   trays, so the side panel is just noise. The stage takes the width instead. */
+body.no-tally .tally{display:none}
+body.no-tally .lane-grid{grid-template-columns:minmax(0,1fr)}
+.seize-doing{
+  position:absolute;left:10px;bottom:2px;
+  font-size:.78rem;font-style:italic;color:#7d8783;
+}
+
+
+/* ---- the board ----
+   Thirty-four categories, every one of them showing a face. It has to fit the
+   wall whole, so the tiles are small and the colour does the reading: green is
+   fine, red is not. */
+.notice-signs{top:150px;height:358px;overflow:hidden}
+body.no-tally .notice-banned{display:none}
+.sign-board{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-top:3px}
+.sign-board .sign{width:auto;padding:1px;border-radius:3px;background:#f4f1e7;border:1px solid #cdc5ae}
+.sign-board .sign img{width:100%;height:auto;display:block}
+.sign-board .sign-ban{border-color:#c04a4a;background:#f7e9e6}
+.sign-board .sign-ok{opacity:.5}
+
+.brief-board{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .9rem}
+.brief-chip{
+  display:flex;align-items:center;gap:.3rem;background:#f7e9e6;border:1px solid #c9a2a2;
+  border-radius:5px;padding:.2rem .5rem .2rem .25rem;
+  font-family:'Barlow Condensed',sans-serif;font-size:1rem;color:#8a2b2b;
+}
+.brief-chip img{width:30px;height:30px}
+
+/* ---- the policy board ----
+   Thirty-four categories, all of them on the wall at once, so the tiles are
+   small and the colour does the reading: green is fine, red is not. */
+body.no-tally .notice-signs{top:150px;height:358px;overflow:hidden}
+body.no-tally .notice-banned{display:none}
+.sign-board{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-top:3px;align-content:start}
+.sign-board .sign{width:auto;padding:1px;border-radius:3px;background:#f4f1e7;border:1px solid #cdc5ae}
+.sign-board .sign img{width:100%;height:auto;display:block}
+.sign-board .sign-ban{border-color:#c0483f;background:#f8e7e4}
+.sign-board .sign-ok{opacity:.42}
+
+.brief-board{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .9rem}
+.brief-chip{
+  display:flex;align-items:center;gap:.3rem;background:#f8e7e4;border:1px solid #c9a2a2;
+  border-radius:5px;padding:.2rem .5rem .2rem .25rem;
+  font-family:'Barlow Condensed',sans-serif;font-size:1rem;color:#8a2b2b;
+}
+.brief-chip img{width:30px;height:30px}
+
+/* ---- three shifts on the menu, the lean one first ---- */
+.menu-modes-three{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1rem;max-width:1100px;margin:1.4rem auto 1.5rem;align-items:stretch;
+}
+@media(max-width:900px){.menu-modes-three{grid-template-columns:minmax(0,1fr)}}
+.mode-card-lead{border-color:var(--tray)}
+
+/* ---- the stab picker ---- */
+.draft{
+  position:fixed;inset:0;z-index:140;overflow-y:auto;
+  display:flex;align-items:center;justify-content:center;padding:clamp(1rem,4vw,2rem);
+  background:rgba(18,25,26,.94);
+}
+.draft-inner{
+  width:min(760px,100%);background:#e7e3d6;border:2px solid #b6ae98;border-radius:8px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);padding:1.1rem 1.3rem 1.3rem;
+}
+.draft-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.5rem;margin-top:.8rem}
+.stab-pick{
+  display:flex;flex-direction:column;align-items:center;gap:.2rem;text-align:center;
+  background:#f4f1e7;border:2px solid #cdc5ae;border-radius:6px;padding:.5rem .3rem;touch-action:manipulation;
+}
+.stab-pick:hover{border-color:#9c2626;background:#fbeeee}
+.stab-pick img{width:62px;height:62px}
+.stab-pick b{font-family:'Barlow Condensed',sans-serif;font-size:1rem;color:#3c372a}
+.stab-skip{margin-top:.9rem;width:100%;padding:.6rem;border:2px solid #b6ae98;border-radius:6px;background:#efebe0;color:#4a442f}
+
+/* a stabbed sign cannot turn this round */
+.sign.stabbed{outline:2px solid #1c1c1c;outline-offset:-2px;position:relative}
+.sign.stabbed::after{
+  content:'';position:absolute;right:-2px;top:-3px;width:12px;height:12px;
+  background:#1c1c1c;clip-path:polygon(50% 0,100% 100%,50% 75%,0 100%);
+}
+
+/* turning a piece over reads as a quick flip rather than a swap */
+.card.item .face{transition:transform .11s ease-in}
+.card.item.turning .face{transform:scaleX(0)}
+
+/* ---- the lean board is a grid ----
+   Five across, three down, because the lighter needs neighbours: fire on a
+   red sign spreads up, down and to either side. The gaps are wider than the
+   policy board's so the rows and columns read as a grid, not a list. */
+.sign-board.sign-grid{grid-template-columns:repeat(6,1fr);gap:4px}
+.sign-board .sign.lit{animation:catch 1.1s ease-out 1;box-shadow:0 0 0 2px #f29a2e}
+@keyframes catch{0%{box-shadow:0 0 0 0 #ffd36b;transform:scale(1.18)}60%{box-shadow:0 0 0 5px rgba(242,154,46,.5)}100%{box-shadow:0 0 0 2px #f29a2e;transform:scale(1)}}
+
+/* ---- the lighter picker: the wall itself, big enough to aim at ---- */
+.light-inner{width:min(720px,100%)}
+.light-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin-top:.8rem}
+.light-pick{
+  display:flex;flex-direction:column;align-items:center;gap:.1rem;text-align:center;
+  background:#f4f1e7;border:2px solid #cdc5ae;border-radius:6px;padding:.35rem .2rem;touch-action:manipulation;
+  position:relative;
+}
+.light-pick img{width:100%;max-width:72px;height:auto}
+.light-pick b{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;line-height:1.05;color:#3c372a}
+.light-pick.light-ban{background:#f8e7e4;border-color:#c0483f}
+.light-pick.light-ok img{opacity:.75}
+.light-pick.aim{border-color:#1c1c1c;box-shadow:0 0 0 2px #1c1c1c}
+.light-pick.reach{border-color:#e07a1f;background:#fdebd3;box-shadow:0 0 0 3px #f29a2e}
+.light-pick.reach img{opacity:1}
+.light-pick.stabbed::after{
+  content:'';position:absolute;right:3px;top:3px;width:14px;height:14px;
+  background:#1c1c1c;clip-path:polygon(50% 0,100% 100%,50% 75%,0 100%);
+}
+.light-hint{margin:.6rem 0 0;min-height:1.3em;font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;color:#8a4a12}
+@media(max-width:520px){.light-pick b{font-size:.75rem}}
+
+.brief-tools{margin:0 0 .9rem;padding-left:1.1rem;line-height:1.4}
+.brief-tools li{margin:.2rem 0}
+
+/* names any picture that did not load on this deploy */
+.missing-note{position:fixed;left:8px;bottom:8px;z-index:200;max-width:min(560px,90vw);
+  background:#7a1f1f;color:#fff;font:600 .85rem/1.3 system-ui,sans-serif;padding:.45rem .7rem;border-radius:6px}
+
+/* a piece lying at an angle: the wrapper turns, the picture inside still
+   does the flip animation when it is turned over */
+.spin{position:absolute;inset:0;display:block;pointer-events:none;transform-origin:50% 50%}
+.lensview .spin{position:relative;width:100%;height:100%}
+.card.item .spin img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.menu-modes.menu-modes-one,body.compact .menu-modes.menu-modes-one{grid-template-columns:minmax(0,560px);justify-content:center}

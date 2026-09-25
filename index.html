@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#2b3639">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Border Force">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/ui/icon-180.png">
+<link rel="icon" href="assets/ui/icon-192.png" sizes="192x192">
+<title>Border Force — playtest rig</title>
+<meta name="description" content="A digital playtest rig for Bag Check, a card game about airport security screening.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- ?v= is a cache buster. Bump it whenever style.css or game.js changes, or a
+     browser (and Vercel's edge cache) will keep serving the old file. -->
+<link rel="stylesheet" href="assets/style.css?v=53">
+</head>
+<body>
+
+<div class="menu" id="menu">
+  <div class="menu-inner">
+    <p class="menu-kicker">Lane 4 &middot; playtest rig</p>
+    <h1 class="menu-title">Border Force</h1>
+    <p class="menu-sub">The first border game board game</p>
+    <p class="menu-blurb">Sixteen suitcases going round, eight things in each and ten seconds a bag.
+      Every piece has two sides and lands at any angle. The wall of signs says what is forbidden today — and
+      it only changes when somebody uses what they have seized.</p>
+
+    <div class="menu-modes menu-modes-one">
+      <div class="mode-card mode-card-lead">
+        <span class="mode-name">Lean shift</span>
+        <span class="mode-tag">51 pieces &middot; 21 signs &middot; turn them over</span>
+        <span class="mode-body">Seize what the wall forbids; leave everything else, or sit out the next bag.
+          A screwdriver turns a sign over, a lighter burns a run of red signs back to green, a knife stops a
+          sign turning at all. Burn the last red sign and the shift ends — most seized wins.</span>
+        <span class="mode-picks">
+          <button class="mode" type="button" data-game="lean" data-goal="16">First to 16</button>
+          <button class="mode" type="button" data-game="lean" data-goal="20">First to 20</button>
+        </span>
+      </div>
+    </div>
+
+    <p class="menu-foot">Every rule here is a proposal you can argue with.</p>
+  </div>
+</div>
+
+<header class="signage">
+  <span class="mark">Border Force</span>
+  <span class="lane" id="modeName">Detector</span>
+  <span class="belt-count" id="beltCount">24 trays on the belt</span>
+  <span class="scoreboard"><span class="scoreboard-label">Score</span><span class="scoreboard-num" id="hudScore">0</span></span>
+  <button class="mute" id="mute" type="button" aria-pressed="false">Sound on</button>
+  <span class="budget" id="budget" hidden>10 checks left</span>
+  <span class="clock" id="clock">0:00</span>
+</header>
+
+<section class="beltbar" aria-label="Conveyor">
+  <div class="belt" id="belt"></div>
+</section>
+
+<main class="lane-grid">
+
+  <section class="rig">
+    <div class="stagewrap" id="stagewrap">
+      <div class="stage" id="stage">
+
+        <!-- Officer B, across the bench. Same belt direction as yours; their
+             arch is flipped so the head sits below the mouth, because they
+             are standing on the other side of it. -->
+        <div class="lane lane-b">
+          <div class="conveyor"><div class="rollers"></div></div>
+          <div class="donespot"></div>
+          <div class="arch">
+            <div class="arch-mouth"></div>
+            <div class="arch-head">
+              <span class="arch-lamp" id="lampB"></span>
+              <span class="arch-name">Detector B</span>
+            </div>
+          </div>
+        </div>
+        <div class="tray lane-tray-b" id="tba" hidden><div class="tray-lip"></div><div class="tray-case" id="tbac"></div></div>
+        <div class="tray lane-tray-b" id="tbb" hidden><div class="tray-lip"></div><div class="tray-case" id="tbbc"></div></div>
+        <div class="tray lane-tray-b" id="tbc" hidden><div class="tray-lip"></div><div class="tray-case" id="tbcc"></div></div>
+
+        <!-- the two seize trays, one each, in the middle where you both see them -->
+        <div class="seize seize-b"><span class="seize-tag">Officer B seized</span><span class="seize-n" id="seizeNB">0</span>
+          <span class="seize-doing" id="oppDoingStage"></span></div>
+        <div class="seize seize-you" id="seizeYou"><span class="seize-tag">You seized</span><span class="seize-n" id="seizeN">0</span></div>
+
+        <!-- the wall, down the left: what is banned, and what is missing -->
+        <div class="notice notice-signs">
+          <p class="notice-head">Today only <span id="signCount"></span></p>
+          <div class="sign-row" id="signRow"></div>
+        </div>
+        <div class="notice notice-banned">
+          <p class="notice-head">Forbidden items</p>
+          <img class="banned-chart" src="assets/ui/forbidden.png" alt="Chart of forbidden items">
+          <p class="notice-foot" id="bannedFoot">16 of them on the belt today</p>
+        </div>
+        <!-- a magnifier each, at the right-hand end of the bench -->
+        <div class="lens lens-b"><span class="lens-tag">Magnifier</span></div>
+        <div class="lens lens-you" id="lensYou"><span class="lens-tag">Magnifier</span></div>
+        <div class="lensview lensview-b" id="lensViewB" hidden></div>
+        <div class="lensview lensview-you" id="lensViewYou" hidden></div>
+
+        <!-- your side -->
+        <div class="lane lane-you">
+          <div class="conveyor"><div class="rollers"></div></div>
+          <div class="donespot"></div>
+          <div class="arch">
+            <div class="arch-mouth"></div>
+            <div class="arch-head">
+              <span class="arch-lamp" id="lamp"></span>
+              <span class="arch-name">Detector</span>
+            </div>
+          </div>
+        </div>
+        <div class="tray lane-tray-you" id="tya" hidden><div class="tray-lip"></div><div class="tray-case" id="tyac"></div></div>
+        <div class="tray lane-tray-you" id="tyb" hidden><div class="tray-lip"></div><div class="tray-case" id="tybc"></div></div>
+        <div class="tray lane-tray-you" id="tyc" hidden><div class="tray-lip"></div><div class="tray-case" id="tycc"></div></div>
+
+        <!-- no lamp means weight is the only tell you get before deciding -->
+        <div class="traytime" id="trayTime" hidden>10.0</div>
+
+        <div class="weigh" id="weigh" hidden>
+          <span class="weigh-bars" id="weighBars"></span>
+          <span class="weigh-word" id="weighWord"></span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- phone only: the page chrome is hidden and these sit over the stage -->
+    <div class="hud" id="hud">
+      <span class="hud-score"><b id="hudYou">0</b><i>you</i></span>
+      <span class="hud-score"><b id="hudOpp">0</b><i>B</i></span>
+      <span class="hud-belt" id="hudBelt">24 on the belt</span>
+      <span class="hud-line" id="hudLine"></span>
+      <button class="hud-btn" id="hudMute" type="button">Sound</button>
+    </div>
+
+    <div class="controls" id="controls">
+      <button class="go" id="btnGo" type="button">Go</button>
+      <button class="pass" id="btnPass" type="button">Pass</button>
+      <button class="check" id="btnCheck" type="button">Check</button>
+    </div>
+    <p class="prompt" id="prompt">Press Go to start the belt.</p>
+  </section>
+
+  <aside class="tally">
+    <div class="pane pane-you">
+      <p class="pane-who">You</p>
+      <p class="pane-score" id="youScore">0</p>
+      <dl class="pane-lines">
+        <div><dt>Trays</dt><dd id="youTrays">0</dd></div>
+        <div><dt>Seized</dt><dd id="youSeized">0</dd></div>
+      </dl>
+    </div>
+    <div class="pane pane-opp">
+      <p class="pane-who">Officer B</p>
+      <p class="pane-score" id="oppScore">0</p>
+      <dl class="pane-lines">
+        <div><dt>Trays</dt><dd id="oppTrays">0</dd></div>
+        <div><dt>Seized</dt><dd id="oppSeized">0</dd></div>
+      </dl>
+      <p class="pane-doing" id="oppDoing">Walking to the lane</p>
+    </div>
+  </aside>
+
+</main>
+
+<div class="missing-note" id="missingNote" hidden></div>
+
+<div class="draft" id="tool" hidden>
+  <div class="draft-inner light-inner">
+    <p class="brief-kicker" id="toolKicker"></p>
+    <h2 class="brief-head" id="toolHead"></h2>
+    <p class="brief-lede"><span id="toolLede"></span> <span id="toolCount"></span></p>
+    <div class="light-grid" id="toolList"></div>
+    <p class="light-hint" id="toolHint">Pick a sign.</p>
+    <button class="ghost stab-skip" id="toolSkip" type="button"></button>
+  </div>
+</div>
+
+<div class="brief" id="brief" hidden>
+  <div class="brief-inner">
+    <p class="brief-kicker">Before the shift</p>
+    <h2 class="brief-head">Today’s amendments</h2>
+    <div id="briefBody"></div>
+    <button class="brief-go" id="briefGo" type="button">I've memorised them</button>
+  </div>
+</div>
+
+<div class="rotate" id="rotate" hidden>
+  <p>Turn your phone sideways</p>
+  <span>The bench is wider than it is tall</span>
+</div>
+
+<section class="result" id="result" hidden></section>
+
+<footer class="colophon">
+  <p>Playtest rig, not the finished game. Every rule here is a proposal you can argue with.</p>
+</footer>
+
+<script src="assets/items.js?v=53"></script>
+<script src="assets/game.js?v=53"></script>
+<script>
+/* Offline + add-to-home-screen. Only registers where it can: a service worker
+   needs https or localhost, so opening the file directly does nothing. */
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
