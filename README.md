@@ -11,11 +11,12 @@ See **RULES.md** for how to play.
 ## Uploading to GitHub from the browser
 
 GitHub's web uploader takes **at most 100 files per upload**. This repo has
-about 260 files, so it comes in three parts, each under 100:
+about 240 files, so it comes in four parts, each under 100:
 
 1. **part 1** — code, signs, sounds, icons (the shell)
-2. **part 2** — cards A–L
-3. **part 3** — cards M–Z and the suitcases
+2. **part 2** — cards: books to fish
+3. **part 3** — cards: hats to t-shirts
+4. **part 4** — cards: totes to underwear, and the suitcases
 
 Unzip each part and drag its **contents** (the `assets` folder and any loose
 files) onto the repo's "Add file → Upload files" page, one part at a time,
@@ -38,7 +39,9 @@ file is uploaded it appears on the next visit.
   - `GAMES.lean` — bag count and size.
   - `setUpBoard()` — shuffles the wall.
   - `TOOLS` / `offerTool()` — screwdriver, lighter, fish, bomb and knife.
-    - The fish flips a whole row, `rowReach()`; rows are lettered A–D.
+    - The gun is not a held tool: `seizeGun()` sets `gunLock`, which skips
+      the whole tool step before the next bag, for both players.
+    - The fish flips a whole row, `rowReach()`; rows are lettered A–F.
     - The bomb reshuffles the wall and re-deals the same number of reds,
       `detonate()`.
   - `oppTools()` / `oppStabs()` — how Officer B uses them.
@@ -64,6 +67,10 @@ turning it over never changes its size. Signs are 240×240 transparent PNGs.
 - **Cameras** (`camera_allowed` / `no_camera`), **Shoes** (`shoes_allowed` /
   `no_shoes`) and **Bombs** (`bombs_ok` / `no_bombs`) also come from the art
   folder.
+- **Guns** use `guns_ok` / `no_guns`.
+- **Snacks** use `snacks_allowed` / `no_snacks`.
+- **The two AK-47s** touched on their sheet and were split apart along the
+  narrowest point between them.
 - **The dynamite** was drawn once, so its back is its mirror image. Replace
   `lean_bombs_1_b.png` if a proper back gets drawn.
 - **Bottles** uses the alcohol pair; its icon is a bottle, but it could have
