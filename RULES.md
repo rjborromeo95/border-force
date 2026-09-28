@@ -5,12 +5,15 @@ what is inside, seize what is forbidden today, leave everything else.
 
 ## The pieces
 
-Two hundred and four punch-out pieces, eighty designs: three knives, four
-lighters, four screwdrivers, two fish, two bombs, three guns, and three each of
-five hats, five t-shirts, five trousers, five dresses, five tote bags, five
-bottles, five pairs of underwear, five books, five devices, five towels, three
-cameras, five shoes and four snacks. Twenty-five suitcases of eight, so four
-ordinary pieces stay in the box each game — never a tool.
+Eighty punch-out pieces, **every one of them one of a kind**: eighteen tools
+(three knives, four lighters, four screwdrivers, two fish, two bombs, three
+guns) and sixty-two ordinary pieces (five hats, five t-shirts, five trousers,
+five dresses, five tote bags, five bottles, five pairs of underwear, five
+books, five devices, five towels, three cameras, five shoes and four snacks).
+
+**Each game packs a different box:** twelve tools and forty-eight ordinary
+pieces, chosen at random, go into ten suitcases of six. The other twenty stay
+out for that game, so which tools and items turn up changes every time.
 
 **Every piece has two sides**, and either side can get it confiscated. A piece
 is packed whichever way up it landed — sometimes back up — and it stays that

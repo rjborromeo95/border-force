@@ -34,7 +34,10 @@ file is uploaded it appears on the next visit.
     forbidden if any tag on either side matches a red sign.
   - `LEAN_CATEGORIES` — the signs.
   - `LEAN_COLS` — how wide the grid is.
-  - `leanDeck()` — deals the pieces. Random side up, tools never left out.
+  - `leanDeck()` — packs the box. Every piece is `copies: 1`, one of a kind.
+    Each game picks 12 random tools and 48 random ordinary pieces (set by
+    `permitted` / `restricted` in `GAMES.lean`), each packed random side up.
+  - `GAMES.lean` — `bags: 10`, `fixedBag: 6` (six to a suitcase).
 - `assets/game.js`:
   - `GAMES.lean` — bag count and size.
   - `setUpBoard()` — shuffles the wall.

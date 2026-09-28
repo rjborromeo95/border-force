@@ -18,34 +18,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- ?v= is a cache buster. Bump it whenever style.css or game.js changes, or a
      browser (and Vercel's edge cache) will keep serving the old file. -->
-<link rel="stylesheet" href="assets/style.css?v=59">
+<link rel="stylesheet" href="assets/style.css?v=63">
 </head>
 <body>
 
-<div class="menu" id="menu">
+<div class="menu menu-cover" id="menu">
   <div class="menu-inner">
-    <p class="menu-kicker">Lane 4 &middot; playtest rig</p>
-    <h1 class="menu-title">Border Force</h1>
-    <p class="menu-sub">The first border game board game</p>
-    <p class="menu-blurb">Twenty-five suitcases going round, eight things in each and ten seconds a bag.
-      Every piece has two sides and lands at any angle. The wall of signs says what is forbidden today — and
-      it only changes when somebody uses what they have seized.</p>
+    <img class="menu-cover-art" src="assets/ui/cover.webp" width="1100" height="1561"
+         alt="Border Force — a game where you check suitcases, confiscate items and protect your country">
+    <div class="menu-side">
+      <h1 class="menu-title visually-hidden">Border Force</h1>
+      <p class="menu-kicker">Lane 4 &middot; playtest rig</p>
+      <p class="menu-blurb">Ten suitcases going round, six things in each and ten seconds a bag.
+        Every piece has two sides and lands at any angle. The wall of signs says what is forbidden today — and
+        it only changes when somebody uses what they have seized.</p>
 
-    <div class="menu-modes menu-modes-one">
       <div class="mode-card mode-card-lead">
         <span class="mode-name">Lean shift</span>
         <span class="mode-tag">80 pieces &middot; 29 signs &middot; turn them over</span>
         <span class="mode-body">Seize what the wall forbids; leave everything else, or sit out the next bag.
-          A screwdriver turns a sign over, a fish turns a whole row, a bomb reshuffles the whole wall, a gun stops anyone using anything for a turn, a lighter burns a run of red signs back to
-          green, a knife stops a sign turning at all. Burn the last red sign and the shift ends — most seized wins.</span>
+          A screwdriver turns a sign over, a fish turns a whole row, a bomb reshuffles the whole wall, a gun stops
+          anyone using anything for a turn, a lighter burns a run of red signs back to green, a knife stops a sign
+          turning at all. Burn the last red sign and the shift ends — most seized wins.</span>
         <span class="mode-picks">
           <button class="mode" type="button" data-game="lean" data-goal="16">First to 16</button>
           <button class="mode" type="button" data-game="lean" data-goal="20">First to 20</button>
         </span>
       </div>
-    </div>
 
-    <p class="menu-foot">Every rule here is a proposal you can argue with.</p>
+      <p class="menu-foot">Every rule here is a proposal you can argue with.</p>
+    </div>
   </div>
 </div>
 
@@ -207,8 +209,8 @@
   <p>Playtest rig, not the finished game. Every rule here is a proposal you can argue with.</p>
 </footer>
 
-<script src="assets/items.js?v=59"></script>
-<script src="assets/game.js?v=59"></script>
+<script src="assets/items.js?v=63"></script>
+<script src="assets/game.js?v=63"></script>
 <script>
 /* Offline + add-to-home-screen. Only registers where it can: a service worker
    needs https or localhost, so opening the file directly does nothing. */
