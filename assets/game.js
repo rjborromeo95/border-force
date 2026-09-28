@@ -62,7 +62,7 @@ const GAMES = {
 GAMES.lean = {
   key: 'lean', name: 'Lean shift', tray: 10000, cut: true, reveal: false,
   lean: true, wide: true, useBoard: true, banAfter: 3, banCount: 2,
-  perSide: 12, bags: 25, cap: 8, fixedBag: 8, permitted: 186, restricted: 18,
+  perSide: 5, bags: 10, cap: 6, fixedBag: 6, permitted: 48, restricted: 12,
   noPass: true, autoOpen: true, skipOnWrong: true, lockstep: true,
   circulate: true, recircCap: 400
 };
@@ -1526,7 +1526,10 @@ function render() {
 
   if (phase === 'searching') {
     if (M.noPass) {
-      p.innerHTML = 'Eight things, fifteen seconds, and no way to wave it through. Slide them out, ' +
+      const nums = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+      const things = nums[M.fixedBag] || M.fixedBag, secs = nums[Math.round(M.tray / 1000)] || Math.round(M.tray / 1000);
+      p.innerHTML = things.charAt(0).toUpperCase() + things.slice(1) + ' things, ' + secs +
+        ' seconds, and no way to wave it through. Slide them out, ' +
         'take what is forbidden <strong>today</strong>, and leave everything else alone — anything legal ' +
         'you pull out and you sit out the next bag.';
       return;

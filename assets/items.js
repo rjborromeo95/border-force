@@ -803,68 +803,68 @@ const LEAN_PIECES = [
   { key: 'lean_knives_2',    name: "Folding knife",    sound: 'light',  copies: 1,
     sides: [ { img: 'lean_knives_2_a.png', tags: ['knife'] },
              { img: 'lean_knives_2_b.png', tags: ['knife'] } ] },
-  { key: 'lean_five_hats_0', name: "Graduation cap",   sound: 'cloth',  copies: 3,
+  { key: 'lean_five_hats_0', name: "Graduation cap",   sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_five_hats_0_a.png', tags: ['hat', 'black'] },
              { img: 'lean_five_hats_0_b.png', tags: ['hat', 'black'] } ] },
-  { key: 'lean_five_hats_1', name: "Bucket hat",       sound: 'light',  copies: 3,
+  { key: 'lean_five_hats_1', name: "Bucket hat",       sound: 'light',  copies: 1,
     sides: [ { img: 'lean_five_hats_1_a.png', tags: ['hat', 'green', 'belt'] },
              { img: 'lean_five_hats_1_b.png', tags: ['hat', 'green', 'belt'] } ] },
-  { key: 'lean_five_hats_2', name: "Red cap",          sound: 'cloth',  copies: 3,
+  { key: 'lean_five_hats_2', name: "Red cap",          sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_five_hats_2_a.png', tags: ['hat', 'red'] },
              { img: 'lean_five_hats_2_b.png', tags: ['hat', 'red'] } ] },
-  { key: 'lean_five_hats_3', name: "Beanie",           sound: 'cloth',  copies: 3,
+  { key: 'lean_five_hats_3', name: "Beanie",           sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_five_hats_3_a.png', tags: ['hat', 'smiley'] },
              { img: 'lean_five_hats_3_b.png', tags: ['hat'] } ] },
-  { key: 'lean_five_hats_4', name: "Yellow cap",       sound: 'cloth',  copies: 3,
+  { key: 'lean_five_hats_4', name: "Yellow cap",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_five_hats_4_a.png', tags: ['hat', 'yellow'] },
              { img: 'lean_five_hats_4_b.png', tags: ['hat', 'yellow'] } ] },
-  { key: 'lean_t_shirts_0',  name: "Green t-shirt",    sound: 'cloth',  copies: 3,
+  { key: 'lean_t_shirts_0',  name: "Green t-shirt",    sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_t_shirts_0_a.png', tags: ['tshirt', 'green'] },
              { img: 'lean_t_shirts_0_b.png', tags: ['tshirt', 'green'] } ] },
-  { key: 'lean_t_shirts_1',  name: "Black t-shirt",    sound: 'cloth',  copies: 3,
+  { key: 'lean_t_shirts_1',  name: "Black t-shirt",    sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_t_shirts_1_a.png', tags: ['tshirt', 'black'] },
              { img: 'lean_t_shirts_1_b.png', tags: ['tshirt', 'black', 'instruments'] } ] },
-  { key: 'lean_t_shirts_2',  name: "Red t-shirt",      sound: 'cloth',  copies: 3,
+  { key: 'lean_t_shirts_2',  name: "Red t-shirt",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_t_shirts_2_a.png', tags: ['tshirt', 'red'] },
              { img: 'lean_t_shirts_2_b.png', tags: ['tshirt', 'red'] } ] },
-  { key: 'lean_t_shirts_3',  name: "Yellow t-shirt",   sound: 'cloth',  copies: 3,
+  { key: 'lean_t_shirts_3',  name: "Yellow t-shirt",   sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_t_shirts_3_a.png', tags: ['tshirt', 'yellow'] },
              { img: 'lean_t_shirts_3_b.png', tags: ['tshirt', 'yellow'] } ] },
-  { key: 'lean_t_shirts_4',  name: "White t-shirt",    sound: 'cloth',  copies: 3,
+  { key: 'lean_t_shirts_4',  name: "White t-shirt",    sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_t_shirts_4_a.png', tags: ['tshirt', 'white'] },
              { img: 'lean_t_shirts_4_b.png', tags: ['tshirt', 'white'] } ] },
-  { key: 'lean_trousers_0',  name: "Black trousers",   sound: 'cloth',  copies: 3,
+  { key: 'lean_trousers_0',  name: "Black trousers",   sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_trousers_0_a.png', tags: ['trousers', 'black'] },
              { img: 'lean_trousers_0_b.png', tags: ['trousers', 'black'] } ] },
-  { key: 'lean_trousers_1',  name: "Olive trousers",   sound: 'cloth',  copies: 3,
+  { key: 'lean_trousers_1',  name: "Olive trousers",   sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_trousers_1_a.png', tags: ['trousers', 'green'] },
              { img: 'lean_trousers_1_b.png', tags: ['trousers', 'green'] } ] },
-  { key: 'lean_trousers_2',  name: "Red trousers",     sound: 'cloth',  copies: 3,
+  { key: 'lean_trousers_2',  name: "Red trousers",     sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_trousers_2_a.png', tags: ['trousers', 'red'] },
              { img: 'lean_trousers_2_b.png', tags: ['trousers', 'red'] } ] },
-  { key: 'lean_trousers_3',  name: "Jeans",            sound: 'light',  copies: 3,
+  { key: 'lean_trousers_3',  name: "Jeans",            sound: 'light',  copies: 1,
     sides: [ { img: 'lean_trousers_3_a.png', tags: ['trousers'] },
              { img: 'lean_trousers_3_b.png', tags: ['trousers'] } ] },
-  { key: 'lean_trousers_4',  name: "White trousers",   sound: 'cloth',  copies: 3,
+  { key: 'lean_trousers_4',  name: "White trousers",   sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_trousers_4_a.png', tags: ['trousers', 'white'] },
              { img: 'lean_trousers_4_b.png', tags: ['trousers', 'white'] } ] },
 
   /* Dresses. Two of them are only caught from one side: the white dress has
      its teddy on the front, the blue dress its smileys on the front. Turned
      over, both look like any other dress. */
-  { key: 'lean_dresses_5',   name: "Red belted dress", sound: 'cloth',  copies: 3,
+  { key: 'lean_dresses_5',   name: "Red belted dress", sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_dresses_5_a.png', tags: ['dress', 'red', 'belt'] },
              { img: 'lean_dresses_5_b.png', tags: ['dress', 'red', 'belt'] } ] },
-  { key: 'lean_dresses_1',   name: "Green dress",      sound: 'cloth',  copies: 3,
+  { key: 'lean_dresses_1',   name: "Green dress",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_dresses_1_a.png', tags: ['dress', 'green'] },
              { img: 'lean_dresses_1_b.png', tags: ['dress', 'green'] } ] },
-  { key: 'lean_dresses_2',   name: "White dress",      sound: 'cloth',  copies: 3,
+  { key: 'lean_dresses_2',   name: "White dress",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_dresses_2_a.png', tags: ['dress', 'white', 'teddy'] },
              { img: 'lean_dresses_2_b.png', tags: ['dress', 'white'] } ] },
-  { key: 'lean_dresses_3',   name: "Blue dress",       sound: 'cloth',  copies: 3,
+  { key: 'lean_dresses_3',   name: "Blue dress",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_dresses_3_a.png', tags: ['dress', 'smiley'] },
              { img: 'lean_dresses_3_b.png', tags: ['dress'] } ] },
-  { key: 'lean_dresses_4',   name: "Black slip dress", sound: 'light',  copies: 3,
+  { key: 'lean_dresses_4',   name: "Black slip dress", sound: 'light',  copies: 1,
     sides: [ { img: 'lean_dresses_4_a.png', tags: ['dress', 'black'] },
              { img: 'lean_dresses_4_b.png', tags: ['dress', 'black'] } ] },
 
@@ -884,37 +884,37 @@ const LEAN_PIECES = [
              { img: 'lean_lighters_3_b.png', tags: ['lighter', 'black'] } ] },
 
   /* Tote bags. The black one has a smiley on both faces. */
-  { key: 'lean_totes_0',     name: "Tennis tote",      sound: 'cloth',  copies: 3,
+  { key: 'lean_totes_0',     name: "Tennis tote",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_0_a.png', tags: ['tote', 'white', 'ball'] },
              { img: 'lean_totes_0_b.png', tags: ['tote', 'white'] } ] },
-  { key: 'lean_totes_1',     name: "Black tote",       sound: 'cloth',  copies: 3,
+  { key: 'lean_totes_1',     name: "Black tote",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_1_a.png', tags: ['tote', 'black', 'smiley'] },
              { img: 'lean_totes_1_b.png', tags: ['tote', 'black', 'smiley'] } ] },
-  { key: 'lean_totes_2',     name: "White tote",       sound: 'cloth',  copies: 3,
+  { key: 'lean_totes_2',     name: "White tote",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_2_a.png', tags: ['tote', 'white'] },
              { img: 'lean_totes_2_b.png', tags: ['tote', 'white'] } ] },
-  { key: 'lean_totes_3',     name: "Yellow tote",      sound: 'cloth',  copies: 3,
+  { key: 'lean_totes_3',     name: "Yellow tote",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_3_a.png', tags: ['tote', 'yellow'] },
              { img: 'lean_totes_3_b.png', tags: ['tote', 'yellow'] } ] },
-  { key: 'lean_totes_4',     name: "Blue tote",        sound: 'rustle', copies: 3,
+  { key: 'lean_totes_4',     name: "Blue tote",        sound: 'rustle', copies: 1,
     sides: [ { img: 'lean_totes_4_a.png', tags: ['tote'] },
              { img: 'lean_totes_4_b.png', tags: ['tote'] } ] },
 
   /* Bottles. The wine counts as red, not black — it is the red sign that
      catches it. */
-  { key: 'lean_bottles_0',   name: "Olive oil",        sound: 'glass',  copies: 3,
+  { key: 'lean_bottles_0',   name: "Olive oil",        sound: 'glass',  copies: 1,
     sides: [ { img: 'lean_bottles_0_a.png', tags: ['bottle', 'green'] },
              { img: 'lean_bottles_0_b.png', tags: ['bottle', 'green'] } ] },
-  { key: 'lean_bottles_1',   name: "Rum",              sound: 'glass',  copies: 3,
+  { key: 'lean_bottles_1',   name: "Rum",              sound: 'glass',  copies: 1,
     sides: [ { img: 'lean_bottles_1_a.png', tags: ['bottle'] },
              { img: 'lean_bottles_1_b.png', tags: ['bottle'] } ] },
-  { key: 'lean_bottles_2',   name: "Red wine",         sound: 'glass',  copies: 3,
+  { key: 'lean_bottles_2',   name: "Red wine",         sound: 'glass',  copies: 1,
     sides: [ { img: 'lean_bottles_2_a.png', tags: ['bottle', 'red'] },
              { img: 'lean_bottles_2_b.png', tags: ['bottle', 'red'] } ] },
-  { key: 'lean_bottles_3',   name: "Water",            sound: 'plastic', copies: 3,
+  { key: 'lean_bottles_3',   name: "Water",            sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_bottles_3_a.png', tags: ['bottle'] },
              { img: 'lean_bottles_3_b.png', tags: ['bottle'] } ] },
-  { key: 'lean_bottles_4',   name: "Mustard",          sound: 'plastic', copies: 3,
+  { key: 'lean_bottles_4',   name: "Mustard",          sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_bottles_4_a.png', tags: ['bottle', 'yellow'] },
              { img: 'lean_bottles_4_b.png', tags: ['bottle', 'yellow'] } ] },
 
@@ -936,56 +936,56 @@ const LEAN_PIECES = [
 
   /* Underwear. Caught by the Underwear sign, or by colour — the blue one
      has none. */
-  { key: 'lean_underwear_0', name: "Yellow bra",       sound: 'cloth',  copies: 3,
+  { key: 'lean_underwear_0', name: "Yellow bra",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_underwear_0_a.png', tags: ['underwear', 'yellow'] },
              { img: 'lean_underwear_0_b.png', tags: ['underwear', 'yellow'] } ] },
-  { key: 'lean_underwear_1', name: "Red briefs",       sound: 'cloth',  copies: 3,
+  { key: 'lean_underwear_1', name: "Red briefs",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_underwear_1_a.png', tags: ['underwear', 'red'] },
              { img: 'lean_underwear_1_b.png', tags: ['underwear', 'red'] } ] },
-  { key: 'lean_underwear_2', name: "White boxers",     sound: 'cloth',  copies: 3,
+  { key: 'lean_underwear_2', name: "White boxers",     sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_underwear_2_a.png', tags: ['underwear', 'white'] },
              { img: 'lean_underwear_2_b.png', tags: ['underwear', 'white'] } ] },
-  { key: 'lean_underwear_3', name: "Blue thong",       sound: 'cloth',  copies: 3,
+  { key: 'lean_underwear_3', name: "Blue thong",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_underwear_3_a.png', tags: ['underwear'] },
              { img: 'lean_underwear_3_b.png', tags: ['underwear'] } ] },
-  { key: 'lean_underwear_4', name: "Green bra",        sound: 'cloth',  copies: 3,
+  { key: 'lean_underwear_4', name: "Green bra",        sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_underwear_4_a.png', tags: ['underwear', 'green'] },
              { img: 'lean_underwear_4_b.png', tags: ['underwear', 'green'] } ] },
 
   /* Books. Only the yellow one is a colour the wall can ban. The piano book
      is an instrument from the front only — turned over it just says "Tim". */
-  { key: 'lean_books_0',     name: "Piano book",       sound: 'book',   copies: 3,
+  { key: 'lean_books_0',     name: "Piano book",       sound: 'book',   copies: 1,
     sides: [ { img: 'lean_books_0_a.png', tags: ['book', 'instruments'] },
              { img: 'lean_books_0_b.png', tags: ['book'] } ] },
-  { key: 'lean_books_1',     name: "Baking book",      sound: 'book',   copies: 3,
+  { key: 'lean_books_1',     name: "Baking book",      sound: 'book',   copies: 1,
     sides: [ { img: 'lean_books_1_a.png', tags: ['book'] },
              { img: 'lean_books_1_b.png', tags: ['book'] } ] },
-  { key: 'lean_books_2',     name: "Ideas book",       sound: 'book',   copies: 3,
+  { key: 'lean_books_2',     name: "Ideas book",       sound: 'book',   copies: 1,
     sides: [ { img: 'lean_books_2_a.png', tags: ['book'] },
              { img: 'lean_books_2_b.png', tags: ['book'] } ] },
-  { key: 'lean_books_3',     name: "Yellow book",      sound: 'book',   copies: 3,
+  { key: 'lean_books_3',     name: "Yellow book",      sound: 'book',   copies: 1,
     sides: [ { img: 'lean_books_3_a.png', tags: ['book', 'yellow'] },
              { img: 'lean_books_3_b.png', tags: ['book', 'yellow'] } ] },
-  { key: 'lean_books_4',     name: "Purple book",      sound: 'book',   copies: 3,
+  { key: 'lean_books_4',     name: "Purple book",      sound: 'book',   copies: 1,
     sides: [ { img: 'lean_books_4_a.png', tags: ['book'] },
              { img: 'lean_books_4_b.png', tags: ['book'] } ] },
 
   /* Devices. The yellow-cased phone counts as yellow on both sides, the
      laptop has its smiley sticker on the back only, and the Game Boy counts
      as white. The tablet and the leather-cased phone have no colour. */
-  { key: 'lean_devices_0', name: "Yellow phone", sound: 'plastic', copies: 3,
+  { key: 'lean_devices_0', name: "Yellow phone", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_devices_0_a.png', tags: ['device', 'yellow'] },
              { img: 'lean_devices_0_b.png', tags: ['device', 'yellow'] } ] },
-  { key: 'lean_devices_1', name: "Game Boy", sound: 'plastic', copies: 3,
+  { key: 'lean_devices_1', name: "Game Boy", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_devices_1_a.png', tags: ['device', 'white'] },
              { img: 'lean_devices_1_b.png', tags: ['device', 'white'] } ] },
-  { key: 'lean_devices_2', name: "Tablet", sound: 'plastic', copies: 3,
+  { key: 'lean_devices_2', name: "Tablet", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_devices_2_a.png', tags: ['device'] },
              { img: 'lean_devices_2_b.png', tags: ['device'] } ] },
-  { key: 'lean_devices_3', name: "Leather phone", sound: 'plastic', copies: 3,
+  { key: 'lean_devices_3', name: "Leather phone", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_devices_3_a.png', tags: ['device'] },
              { img: 'lean_devices_3_b.png', tags: ['device'] } ] },
-  { key: 'lean_devices_4', name: "Laptop", sound: 'plastic', copies: 3,
+  { key: 'lean_devices_4', name: "Laptop", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_devices_4_a.png', tags: ['device'] },
              { img: 'lean_devices_4_b.png', tags: ['device', 'smiley'] } ] },
 
@@ -1000,55 +1000,55 @@ const LEAN_PIECES = [
 
   /* Towels. The red one has a football on one side, the white one with the
      yellow edge a smiley on one side. */
-  { key: 'lean_towels_0', name: "Black towel", sound: 'cloth', copies: 3,
+  { key: 'lean_towels_0', name: "Black towel", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_towels_0_a.png', tags: ['towel', 'black'] },
              { img: 'lean_towels_0_b.png', tags: ['towel', 'black'] } ] },
-  { key: 'lean_towels_1', name: "Red towel", sound: 'cloth', copies: 3,
+  { key: 'lean_towels_1', name: "Red towel", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_towels_1_a.png', tags: ['towel', 'red', 'ball'] },
              { img: 'lean_towels_1_b.png', tags: ['towel', 'red'] } ] },
-  { key: 'lean_towels_2', name: "White towel", sound: 'cloth', copies: 3,
+  { key: 'lean_towels_2', name: "White towel", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_towels_2_a.png', tags: ['towel', 'white'] },
              { img: 'lean_towels_2_b.png', tags: ['towel', 'white'] } ] },
-  { key: 'lean_towels_3', name: "White smiley towel", sound: 'cloth', copies: 3,
+  { key: 'lean_towels_3', name: "White smiley towel", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_towels_3_a.png', tags: ['towel', 'white'] },
              { img: 'lean_towels_3_b.png', tags: ['towel', 'white', 'smiley'] } ] },
-  { key: 'lean_towels_4', name: "Green towel", sound: 'cloth', copies: 3,
+  { key: 'lean_towels_4', name: "Green towel", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_towels_4_a.png', tags: ['towel', 'green'] },
              { img: 'lean_towels_4_b.png', tags: ['towel', 'green'] } ] },
 
   /* Cameras. The teddy camera is a teddy from both sides; the red one has a
      drum sticker, an instrument, on its back only. */
-  { key: 'lean_cameras_0', name: "Teddy camera", sound: 'plastic', copies: 3,
+  { key: 'lean_cameras_0', name: "Teddy camera", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_cameras_0_a.png', tags: ['camera', 'teddy'] },
              { img: 'lean_cameras_0_b.png', tags: ['camera', 'teddy'] } ] },
 
-  { key: 'lean_cameras_1', name: "Red camera", sound: 'plastic', copies: 3,
+  { key: 'lean_cameras_1', name: "Red camera", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_cameras_1_a.png', tags: ['camera', 'red'] },
              { img: 'lean_cameras_1_b.png', tags: ['camera', 'red', 'instruments'] } ] },
 
-  { key: 'lean_cameras_2', name: "Digital camera", sound: 'plastic', copies: 3,
+  { key: 'lean_cameras_2', name: "Digital camera", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_cameras_2_a.png', tags: ['camera'] },
              { img: 'lean_cameras_2_b.png', tags: ['camera'] } ] },
 
   /* Shoes. The blue one has a buckled strap, so it counts as a belt. The red
      flats are red from the top only — underneath they are tan soles. */
-  { key: 'lean_shoes_0', name: "Black trainer", sound: 'cloth', copies: 3,
+  { key: 'lean_shoes_0', name: "Black trainer", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_shoes_0_a.png', tags: ['shoe', 'black'] },
              { img: 'lean_shoes_0_b.png', tags: ['shoe', 'black'] } ] },
 
-  { key: 'lean_shoes_1', name: "Yellow shoe", sound: 'cloth', copies: 3,
+  { key: 'lean_shoes_1', name: "Yellow shoe", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_shoes_1_a.png', tags: ['shoe', 'yellow'] },
              { img: 'lean_shoes_1_b.png', tags: ['shoe', 'yellow'] } ] },
 
-  { key: 'lean_shoes_2', name: "Blue buckle shoe", sound: 'cloth', copies: 3,
+  { key: 'lean_shoes_2', name: "Blue buckle shoe", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_shoes_2_a.png', tags: ['shoe', 'belt'] },
              { img: 'lean_shoes_2_b.png', tags: ['shoe', 'belt'] } ] },
 
-  { key: 'lean_shoes_3', name: "Green boot", sound: 'cloth', copies: 3,
+  { key: 'lean_shoes_3', name: "Green boot", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_shoes_3_a.png', tags: ['shoe', 'green'] },
              { img: 'lean_shoes_3_b.png', tags: ['shoe', 'green'] } ] },
 
-  { key: 'lean_shoes_4', name: "Red flats", sound: 'cloth', copies: 3,
+  { key: 'lean_shoes_4', name: "Red flats", sound: 'cloth', copies: 1,
     sides: [ { img: 'lean_shoes_4_a.png', tags: ['shoe', 'red'] },
              { img: 'lean_shoes_4_b.png', tags: ['shoe'] } ] },
 
@@ -1080,19 +1080,19 @@ const LEAN_PIECES = [
 
   /* Snacks. Caught by the Snacks sign, or by what is on them: the Banjos
      crisps count as instruments, the tub of gummy bottles as bottles. */
-  { key: 'lean_snacks_0', name: "Banjos crisps", sound: 'rustle', copies: 3,
+  { key: 'lean_snacks_0', name: "Banjos crisps", sound: 'rustle', copies: 1,
     sides: [ { img: 'lean_snacks_0_a.png', tags: ['snack', 'green', 'instruments'] },
              { img: 'lean_snacks_0_b.png', tags: ['snack', 'green', 'instruments'] } ] },
 
-  { key: 'lean_snacks_1', name: "Yummies bar", sound: 'rustle', copies: 3,
+  { key: 'lean_snacks_1', name: "Yummies bar", sound: 'rustle', copies: 1,
     sides: [ { img: 'lean_snacks_1_a.png', tags: ['snack', 'red'] },
              { img: 'lean_snacks_1_b.png', tags: ['snack', 'red'] } ] },
 
-  { key: 'lean_snacks_2', name: "Gummy bottles", sound: 'plastic', copies: 3,
+  { key: 'lean_snacks_2', name: "Gummy bottles", sound: 'plastic', copies: 1,
     sides: [ { img: 'lean_snacks_2_a.png', tags: ['snack', 'bottle'] },
              { img: 'lean_snacks_2_b.png', tags: ['snack', 'bottle'] } ] },
 
-  { key: 'lean_snacks_3', name: "Chocolate bar", sound: 'rustle', copies: 3,
+  { key: 'lean_snacks_3', name: "Chocolate bar", sound: 'rustle', copies: 1,
     sides: [ { img: 'lean_snacks_3_a.png', tags: ['snack', 'black'] },
              { img: 'lean_snacks_3_b.png', tags: ['snack', 'black'] } ] }
 ];
@@ -1174,17 +1174,18 @@ function leanDeck() {
       });
     }
   });
-  /* Two hundred and four pieces and twenty-five pouches of eight: four stay
-     in the box each shift, chosen at random — but never a tool (knife,
-     lighter, screwdriver, fish, bomb or gun), so all eighteen are always in
-     play. */
-  const room = DEAL.trays * DEAL.cap;
-  while (d.length > room) {
-    const plain = d.filter(x => !x.restricted);
-    const drop = plain[Math.floor(Math.random() * plain.length)];
-    d.splice(d.indexOf(drop), 1);
-  }
-  return d;
+  /* Every game packs a different box. Twelve of the eighteen tools (knives,
+     lighters, screwdrivers, fish, bombs, guns) and forty-eight of the
+     sixty-two ordinary pieces are chosen at random — every piece is one of a
+     kind, so there are never two of anything — and the rest stay out for
+     this game. Sixty pieces, ten suitcases of six. */
+  const pick = (list, n) => {
+    const a = list.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a.slice(0, Math.min(n, a.length));
+  };
+  return pick(d.filter(x => x.restricted), DEAL.restricted)
+    .concat(pick(d.filter(x => !x.restricted), DEAL.permitted));
 }
 
 /* --- the board, for the policy shift ------------------------------------

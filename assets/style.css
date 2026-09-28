@@ -875,3 +875,73 @@ body.no-tally .notice-banned{display:none}
 .bomb-go{font:700 1.2rem/1 'Barlow Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase;
   background:#c0483f;color:#fff;border:0;border-radius:6px;padding:1rem;cursor:pointer}
 .bomb-go:hover{background:#a63a32}
+
+/* ================= the cover menu =================
+   The box lid on the left, the shift on the right. Everything takes its
+   colours from the cover: carbon-fibre black, white, and the officer's red
+   hat. The weave is drawn in CSS so it needs no second image. */
+.menu.menu-cover{
+  --hat:#b41717; --hat-dark:#5a1515; --carbon:#262626;
+  background-color:#1d1d1d;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 3px, transparent 3px 8px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,.35) 0 3px, transparent 3px 8px),
+    radial-gradient(ellipse at 30% 40%, #2c2c2c 0%, #161616 75%);
+}
+.menu-cover .menu-inner{
+  width:min(1040px,100%);display:grid;grid-template-columns:auto minmax(0,440px);
+  gap:clamp(1.2rem,4vw,3.2rem);align-items:center;justify-content:center;text-align:left;
+}
+.menu-cover-art{
+  display:block;height:min(82vh,720px);width:auto;max-width:100%;
+  border-radius:clamp(14px,2.2vw,26px);
+  box-shadow:0 22px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);
+  animation:lid-in .7s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes lid-in{from{opacity:0;transform:translateY(14px) rotate(-1.5deg)}to{opacity:1;transform:none}}
+.menu-side{display:flex;flex-direction:column;gap:.9rem;animation:lid-in .7s .12s cubic-bezier(.2,.8,.2,1) both}
+.menu-cover .menu-kicker{margin:0;color:#9a9a9a;letter-spacing:.22em}
+.menu-cover .menu-blurb{margin:0;color:#d8d8d8;max-width:none;text-align:left;font-size:.98rem;line-height:1.5}
+.menu-cover .mode-card{
+  background:var(--carbon);border:1px solid #3a3a3a;border-top:4px solid var(--hat);
+  border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.45);text-align:left;
+}
+.menu-cover .mode-name{color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:.03em;font-size:1.7rem}
+.menu-cover .mode-tag{color:#e05252}
+.menu-cover .mode-body{color:#c4c4c4;min-height:0}
+.menu-cover .mode-card .mode{
+  flex:1;background:var(--hat);border:0;border-bottom:4px solid var(--hat-dark);color:#fff;
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:.05em;font-size:1.15rem;padding:.75rem .6rem;border-radius:8px;text-align:center;
+}
+.menu-cover .mode-card .mode:hover{background:#cc2222;color:#fff}
+.menu-cover .mode-card .mode + .mode{background:#fff;color:#1d1d1d;border-bottom-color:#b5b5b5}
+.menu-cover .mode-card .mode + .mode:hover{background:#ececec}
+.menu-cover .menu-foot{text-align:left;color:#7a7a7a}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* narrow screens: the lid on top, the shift underneath */
+@media(max-width:760px){
+  .menu-cover .menu-inner{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+  .menu-cover-art{height:auto;width:min(78vw,380px)}
+  .menu-side{width:min(100%,460px)}
+  .menu-cover .menu-blurb,.menu-cover .menu-foot{text-align:center}
+}
+/* phones on their side: short and wide, so the lid shrinks to fit the height */
+body.compact .menu-cover-art{height:min(88vh,520px)}
+body.compact .menu-cover .menu-blurb{display:none}
+body.compact .menu-cover .mode-card .mode-body{display:none}
+
+/* A phone held upright gets the cover too, stacked. Only the bench itself
+   needs the phone on its side, and the rotate prompt says so once a shift
+   starts. */
+body.compact.portrait .menu.menu-cover:not([hidden]){display:flex}
+body.compact.portrait .menu-cover .menu-inner{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+body.compact.portrait .menu-cover-art{height:auto;width:min(72vw,360px)}
+body.compact.portrait .menu-cover .menu-side{width:min(100%,440px)}
+body.compact.portrait .menu-cover .menu-foot{text-align:center}
+body.compact.portrait .rotate[hidden]{display:flex !important}
+/* the rotate prompt wears the cover's colours too */
+body.compact.portrait .rotate{background:#1d1d1d;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 3px,transparent 3px 8px)}
+.rotate p{text-transform:uppercase;letter-spacing:.04em;border-bottom:3px solid #b41717;padding-bottom:.3rem}
