@@ -575,15 +575,14 @@ function briefText() {
       'something they have seized, before the next bag:</p>' +
       '<ul class="brief-tools">' +
       '<li><b>Screwdriver</b> — four in the game. Turn any one sign over, green to red or red to green.</li>' +
-      '<li><b>Lighter</b> — four in the game. Strike it on a red sign: that sign and every red sign joined to it, ' +
-      'up, down or sideways, burns back to green.</li>' +
+      '<li><b>Lighter</b> — four in the game. Set one green sign alight and it turns red.</li>' +
       '<li><b>Fish</b> — two in the game. Pick a row of the wall and turn every sign in it over: green to ' +
       'red, red to green.</li>' +
       '<li><b>Bomb</b> — two in the game. The whole wall is shuffled into a new layout and the same number of ' +
       'signs as were red end up red, chosen at random.</li>' +
       '<li><b>Gun</b> — three in the game. Seize one and nobody can use anything before the next bag. It works ' +
       'once, the turn it is taken — you cannot hold on to it.</li>' +
-      '<li><b>Knife</b> — three in the game. Stab any sign and nothing can turn it this round. Fire stops at it.</li>' +
+      '<li><b>Knife</b> — three in the game. Stab any sign and nothing can turn or move it this round.</li>' +
       '</ul>' +
       '<p class="brief-lede">If the wall ever has <strong>no red sign at all</strong>, the shift ends there and ' +
       'whoever has seized more wins.</p>' +
@@ -1093,7 +1092,7 @@ function seize(card) {
     }
     if (M.lean && isLighter(card.item)) {
       you.lights = (you.lights || 0) + 1;
-      toast('A lighter — you can burn red signs off the wall before the next bag', true);
+      toast('A lighter — you can set a green sign alight before the next bag', true);
     }
     if (M.lean && isScrewdriver(card.item)) {
       you.screws = (you.screws || 0) + 1;
@@ -1574,11 +1573,10 @@ let roundNo = 0, youDone = false, oppDone = false, roundGoing = false;
 
    - a SCREWDRIVER turns one sign over, either way: green to red or red to
      green. Four in the game.
-   - a LIGHTER is struck on a red sign and puts it out: that sign, and every
-     red sign joined to it up, down or sideways, goes back to green. It runs
-     along a chain of reds as far as the chain goes. Four in the game.
+   - a LIGHTER sets one green sign alight and it turns red. Nothing spreads,
+     and it does nothing to a red sign. Four in the game.
    - a KNIFE stabs one sign, either colour, and nothing can turn it this round:
-     not a screwdriver, and not fire, which stops at it like a firebreak.
+     not a screwdriver, a lighter, a fish or a bomb.
      Three in the game.
 
    Everything is kept until you choose to spend it, and it is spent between
@@ -1634,20 +1632,10 @@ function rowReach(i) {
 
 /* what each tool would change if used on square i, without doing it */
 function fireReach(i) {
-  const start = board[i];
-  if (!start || !start.banned || start.stabbed) return [];
-  const seen = {}, out = [], todo = [i];
-  seen[i] = true;
-  while (todo.length) {
-    const k = todo.shift();
-    out.push(board[k]);
-    leanNeighbours(k).forEach(n => {
-      if (seen[n]) return;
-      seen[n] = true;
-      if (board[n] && board[n].banned && !board[n].stabbed) todo.push(n);
-    });
-  }
-  return out;
+  /* the lighter sets one green sign alight — it turns red, nothing spreads,
+     and a red sign cannot be lit */
+  const r = board[i];
+  return r && !r.banned && !r.stabbed ? [r] : [];
 }
 function turnReach(i) {
   const r = board[i];
@@ -1667,8 +1655,8 @@ const TOOLS = {
   stab: {
     count: 'stabs', reach: stabReach,
     kicker: 'You took a knife', head: 'Stab a sign',
-    lede: 'Pick any sign, red or green. Nothing can turn it this round — not a screwdriver, and not fire, ' +
-          'which stops dead at it.',
+    lede: 'Pick any sign, red or green. Nothing can turn or move it this round — not a screwdriver, ' +
+          'a lighter, a fish or a bomb.',
     skip: 'Keep the knife in your pocket',
     hint: (r, reach) => !reach.length ? r.cat.label + ' is already stabbed.'
                                       : r.cat.label + ' stays ' + (r.banned ? 'red' : 'green') + ' this round.',
@@ -1677,17 +1665,14 @@ const TOOLS = {
   },
   light: {
     count: 'lights', reach: fireReach,
-    kicker: 'You took a lighter', head: 'Burn a sign off the wall',
-    lede: 'Strike it on a <strong>red</strong> sign. That sign goes back to green, and so does every red sign ' +
-          'touching it — above, below or either side — and every red sign touching those, as far as the red runs. ' +
-          'A stabbed sign will not burn and the fire stops at it.',
+    kicker: 'You took a lighter', head: 'Set a sign alight',
+    lede: 'Strike it on a <strong>green</strong> sign and that one sign catches and turns <strong>red</strong>. ' +
+          'Nothing spreads, and it does nothing to a sign that is already red. A stabbed sign will not catch.',
     skip: 'Keep the lighter for later',
-    hint: (r, reach) => !reach.length
-      ? (r.stabbed ? r.cat.label + ' is stabbed — it will not burn.' : r.cat.label + ' is green — nothing to burn.')
-      : 'Burns ' + names(reach) + ' back to green.',
-    apply: rows => { rows.forEach(r => { r.banned = false; r.lit = true; }); },
-    said: (who, rows) => who + ' burnt ' + (rows.length > 1 ? rows.length + ' signs' : 'a sign') +
-                         ' off the wall: ' + names(rows) + ' allowed again'
+    hint: (r, reach) => reach.length ? 'Sets ' + names(reach) + ' alight — it turns red.'
+      : (r.stabbed ? r.cat.label + ' is stabbed — it will not catch.' : r.cat.label + ' is already red.'),
+    apply: rows => { rows.forEach(r => { r.banned = true; r.lit = true; }); },
+    said: (who, rows) => who + ' set a sign alight: no ' + names(rows)
   },
   bomb: {
     count: 'bombs', reach: bombReach, noTarget: true,
@@ -1741,7 +1726,7 @@ const TOOLS = {
 
 /* If the wall ever has no red sign on it at all, nothing can be forbidden
    and the shift is over: whoever has seized more wins. That makes the last
-   red sign worth fighting over — burn it while you are ahead and you win. */
+   red sign worth fighting over — turn it green while you are ahead and you win. */
 let wallBare = false;
 function useTool(kind, i) {
   if (over) return [];
@@ -1869,24 +1854,15 @@ function oppStabs() {
 }
 
 function oppTools() {
-  /* B never burns the Screwdrivers sign while screwdrivers are still going
-     round, and only strikes when there is a lot of red about — except that
-     burning the last of the red ends the shift, so when B is ahead and can
-     clear the whole wall in one strike, it does, and wins. */
+  /* B sets alight the green sign that would catch the most pieces still
+     going round — more red is how anybody gets points. */
   if (opp.lights > 0) {
-    const reds = board.filter(r => r.banned).length;
-    const ahead = (opp.hits || 0) > (you.hits || 0);
-    const screwsOut = (piecesLeft().screwdriver || 0) > 0;
-    let best = -1, most = 1;
+    const left = piecesLeft();
+    let best = -1, most = 0;
     board.forEach((r, i) => {
-      const chain = fireReach(i);
-      if (!chain.length) return;
-      if (ahead && chain.length === reds) { best = i; most = Infinity; return; }
-      if (most === Infinity || reds < 4) return;
-      if (reds - chain.length < 2) return;
-      if (screwsOut && chain.some(x => x.cat.key === 'screwdriver')) return;
-      const n = chain.length + Math.random() * 0.5;
-      if (chain.length >= 2 && n > most) { most = n; best = i; }
+      if (!fireReach(i).length) return;
+      const n = (left[r.cat.tag] || 0) + Math.random() * 0.5;
+      if (n > most) { most = n; best = i; }
     });
     if (best >= 0) oppPlay('light', best);
   }
