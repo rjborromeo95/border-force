@@ -852,9 +852,9 @@ const LEAN_PIECES = [
   /* Dresses. Two of them are only caught from one side: the white dress has
      its teddy on the front, the blue dress its smileys on the front. Turned
      over, both look like any other dress. */
-  { key: 'lean_dresses_0',   name: "Red dress",        sound: 'cloth',  copies: 3,
-    sides: [ { img: 'lean_dresses_0_a.png', tags: ['dress', 'red'] },
-             { img: 'lean_dresses_0_b.png', tags: ['dress', 'red'] } ] },
+  { key: 'lean_dresses_5',   name: "Red belted dress", sound: 'cloth',  copies: 3,
+    sides: [ { img: 'lean_dresses_5_a.png', tags: ['dress', 'red', 'belt'] },
+             { img: 'lean_dresses_5_b.png', tags: ['dress', 'red', 'belt'] } ] },
   { key: 'lean_dresses_1',   name: "Green dress",      sound: 'cloth',  copies: 3,
     sides: [ { img: 'lean_dresses_1_a.png', tags: ['dress', 'green'] },
              { img: 'lean_dresses_1_b.png', tags: ['dress', 'green'] } ] },
@@ -1061,7 +1061,40 @@ const LEAN_PIECES = [
 
   { key: 'lean_bombs_1', name: "Dynamite", sound: 'light', copies: 1,
     sides: [ { img: 'lean_bombs_1_a.png', tags: ['bomb'] },
-             { img: 'lean_bombs_1_b.png', tags: ['bomb'] } ] }
+             { img: 'lean_bombs_1_b.png', tags: ['bomb'] } ] },
+
+  /* Guns. Three in the game, one of each. Seize one and nobody can use any
+     tool before the next bag — once, the turn it is taken, not for as long
+     as it is held. The AK-47 has a smiley face on one side of its stock. */
+  { key: 'lean_guns_0', name: "Small pistol", sound: 'light', copies: 1,
+    sides: [ { img: 'lean_guns_0_a.png', tags: ['gun', 'black'] },
+             { img: 'lean_guns_0_b.png', tags: ['gun', 'black'] } ] },
+
+  { key: 'lean_guns_1', name: "Pistol", sound: 'light', copies: 1,
+    sides: [ { img: 'lean_guns_1_a.png', tags: ['gun', 'black'] },
+             { img: 'lean_guns_1_b.png', tags: ['gun', 'black'] } ] },
+
+  { key: 'lean_guns_2', name: "AK-47", sound: 'light', copies: 1,
+    sides: [ { img: 'lean_guns_2_a.png', tags: ['gun', 'smiley'] },
+             { img: 'lean_guns_2_b.png', tags: ['gun'] } ] },
+
+  /* Snacks. Caught by the Snacks sign, or by what is on them: the Banjos
+     crisps count as instruments, the tub of gummy bottles as bottles. */
+  { key: 'lean_snacks_0', name: "Banjos crisps", sound: 'rustle', copies: 3,
+    sides: [ { img: 'lean_snacks_0_a.png', tags: ['snack', 'green', 'instruments'] },
+             { img: 'lean_snacks_0_b.png', tags: ['snack', 'green', 'instruments'] } ] },
+
+  { key: 'lean_snacks_1', name: "Yummies bar", sound: 'rustle', copies: 3,
+    sides: [ { img: 'lean_snacks_1_a.png', tags: ['snack', 'red'] },
+             { img: 'lean_snacks_1_b.png', tags: ['snack', 'red'] } ] },
+
+  { key: 'lean_snacks_2', name: "Gummy bottles", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_snacks_2_a.png', tags: ['snack', 'bottle'] },
+             { img: 'lean_snacks_2_b.png', tags: ['snack', 'bottle'] } ] },
+
+  { key: 'lean_snacks_3', name: "Chocolate bar", sound: 'rustle', copies: 3,
+    sides: [ { img: 'lean_snacks_3_a.png', tags: ['snack', 'black'] },
+             { img: 'lean_snacks_3_b.png', tags: ['snack', 'black'] } ] }
 ];
 
 /* The pieces that do something when you take them. They are never the ones
@@ -1069,13 +1102,13 @@ const LEAN_PIECES = [
 function isEffectPiece(key) {
   return key.indexOf('lean_knives') === 0 || key.indexOf('lean_lighters') === 0 ||
          key.indexOf('lean_screwdrivers') === 0 || key.indexOf('lean_fish') === 0 ||
-         key.indexOf('lean_bombs') === 0;
+         key.indexOf('lean_bombs') === 0 || key.indexOf('lean_guns') === 0;
 }
 
 /* The board is a grid, five across, because the lighter needs to know what is
    next to what. The signs are shuffled into a new layout every game (see
    setUpBoard in game.js), so the order below is only the list. */
-const LEAN_COLS = 7;   /* twenty-seven signs, seven across and four down, one empty square */
+const LEAN_COLS = 5;   /* twenty-nine signs, five across and six down, one empty square */
 const LEAN_CATEGORIES = [
   { key: 'knife',       label: 'Knives',       tag: 'knife',       allowed: 'knife_ok.png',             banned: 'no_knives.png',        start: true },
   { key: 'hat',         label: 'Hats',         tag: 'hat',         allowed: 'hats_allowed.png',         banned: 'no_hats.png',          start: false },
@@ -1105,7 +1138,9 @@ const LEAN_CATEGORIES = [
   { key: 'device',      label: 'Devices',      tag: 'device',      allowed: 'devices_allowed.png',      banned: 'no_devices.png',       start: false },
   { key: 'camera',      label: 'Cameras',      tag: 'camera',      allowed: 'camera_allowed.png',       banned: 'no_camera.png',        start: false },
   { key: 'shoe',        label: 'Shoes',        tag: 'shoe',        allowed: 'shoes_allowed.png',        banned: 'no_shoes.png',         start: false },
-  { key: 'bomb',        label: 'Bombs',        tag: 'bomb',        allowed: 'bombs_ok.png',             banned: 'no_bombs.png',         start: true }
+  { key: 'bomb',        label: 'Bombs',        tag: 'bomb',        allowed: 'bombs_ok.png',             banned: 'no_bombs.png',         start: true },
+  { key: 'gun',         label: 'Guns',         tag: 'gun',         allowed: 'guns_ok.png',              banned: 'no_guns.png',          start: true },
+  { key: 'snack',       label: 'Snacks',       tag: 'snack',       allowed: 'snacks_allowed.png',       banned: 'no_snacks.png',        start: false }
 ];
 
 /* the four signs touching a square of the grid — fewer at the edges */
@@ -1139,9 +1174,9 @@ function leanDeck() {
       });
     }
   });
-  /* A hundred and eighty-nine pieces and twenty-two pouches of eight:
-     thirteen stay in the box each shift, chosen at random — but never a tool
-     (knife, lighter, screwdriver, fish or bomb), so all fifteen are always in
+  /* Two hundred and four pieces and twenty-five pouches of eight: four stay
+     in the box each shift, chosen at random — but never a tool (knife,
+     lighter, screwdriver, fish, bomb or gun), so all eighteen are always in
      play. */
   const room = DEAL.trays * DEAL.cap;
   while (d.length > room) {

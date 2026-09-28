@@ -62,7 +62,7 @@ const GAMES = {
 GAMES.lean = {
   key: 'lean', name: 'Lean shift', tray: 10000, cut: true, reveal: false,
   lean: true, wide: true, useBoard: true, banAfter: 3, banCount: 2,
-  perSide: 11, bags: 22, cap: 8, fixedBag: 8, permitted: 174, restricted: 15,
+  perSide: 12, bags: 25, cap: 8, fixedBag: 8, permitted: 186, restricted: 18,
   noPass: true, autoOpen: true, skipOnWrong: true, lockstep: true,
   circulate: true, recircCap: 400
 };
@@ -508,6 +508,7 @@ function start() {
   you.screws = 0; opp.screws = 0;
   you.fishes = 0; opp.fishes = 0;
   you.bombs = 0; opp.bombs = 0;
+  gunLock = false; gunLockNow = false;
   wallBare = false;
   $('tool').hidden = true;
   you.skipNext = false; opp.skipNext = false;
@@ -580,6 +581,8 @@ function briefText() {
       'red, red to green.</li>' +
       '<li><b>Bomb</b> — two in the game. The whole wall is shuffled into a new layout and the same number of ' +
       'signs as were red end up red, chosen at random.</li>' +
+      '<li><b>Gun</b> — three in the game. Seize one and nobody can use anything before the next bag. It works ' +
+      'once, the turn it is taken — you cannot hold on to it.</li>' +
       '<li><b>Knife</b> — three in the game. Stab any sign and nothing can turn it this round. Fire stops at it.</li>' +
       '</ul>' +
       '<p class="brief-lede">If the wall ever has <strong>no red sign at all</strong>, the shift ends there and ' +
@@ -1100,6 +1103,7 @@ function seize(card) {
       you.fishes = (you.fishes || 0) + 1;
       toast('A fish — you can turn a whole row over before the next bag', true);
     }
+    if (M.lean && isGun(card.item)) seizeGun('you');
     if (M.lean && isBomb(card.item)) {
       you.bombs = (you.bombs || 0) + 1;
       toast('A bomb — you can blow up the wall before the next bag', true);
@@ -1585,6 +1589,17 @@ function isLighter(it)     { return !!(it && it.design && it.design.indexOf('lea
 function isScrewdriver(it) { return !!(it && it.design && it.design.indexOf('lean_screwdrivers') === 0); }
 function isFish(it)        { return !!(it && it.design && it.design.indexOf('lean_fish') === 0); }
 function isBomb(it)        { return !!(it && it.design && it.design.indexOf('lean_bombs') === 0); }
+function isGun(it)         { return !!(it && it.design && it.design.indexOf('lean_guns') === 0); }
+
+/* A gun seized legally locks the wall down for the gap before the next bag:
+   nobody — you or Officer B — can use a knife, lighter, screwdriver, fish or
+   bomb. It is not kept in hand; it works once, the turn it is taken. */
+let gunLock = false, gunLockNow = false;
+function seizeGun(who) {
+  gunLock = true;
+  toast(who === 'you' ? 'A gun — nobody can use anything before the next bag'
+                      : 'Officer B seized a gun — nobody can use anything before the next bag', who === 'you');
+}
 
 /* The bomb: every sign that is not stabbed is gathered up, shuffled and
    dealt back into the empty squares, and then exactly as many of them as
@@ -1921,6 +1936,8 @@ function beginRound() {
   youDone = false; oppDone = false; roundGoing = true;
   board.forEach(r => { r.lit = false; });
   if (M.lean) {
+    gunLockNow = gunLock; gunLock = false;           /* the gun covers this gap only */
+    if (gunLockNow) { toast('Gun on the table — no tools this time', false); dealRound(); return; }
     oppStabs();
     const steps = ['stab', 'light', 'screw', 'fish', 'bomb'].map(k => then => offerTool(k, then));
     const run = () => {
@@ -1936,7 +1953,7 @@ function beginRound() {
 
 function dealRound() {
   if (over) return;
-  if (M.lean) oppTools();
+  if (M.lean) { if (!gunLockNow) oppTools(); gunLockNow = false; }
   else amendmentDue();
   if (wallBare) return;                          /* the lean wall never turns by itself */
   board.forEach(r => { r.stabbed = false; });   /* a stab holds for one turn only */
@@ -2205,6 +2222,7 @@ function oppSearch(contraband, size, rush) {
       if (M.lean && isScrewdriver(it)) opp.screws = (opp.screws || 0) + 1;
       if (M.lean && isFish(it)) opp.fishes = (opp.fishes || 0) + 1;
       if (M.lean && isBomb(it)) opp.bombs = (opp.bombs || 0) + 1;
+      if (M.lean && isGun(it)) seizeGun('opp');
       creditSeizure(opp, it);
       pop(SEIZE_THEM.x + SEIZE_THEM.w - 60, SEIZE_THEM.y - 26,
           '+' + VP_SEIZED, 'theirs');
