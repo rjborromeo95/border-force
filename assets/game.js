@@ -62,7 +62,7 @@ const GAMES = {
 GAMES.lean = {
   key: 'lean', name: 'Lean shift', tray: 10000, cut: true, reveal: false,
   lean: true, wide: true, useBoard: true, banAfter: 3, banCount: 2,
-  perSide: 8, bags: 16, cap: 8, fixedBag: 8, permitted: 117, restricted: 11,
+  perSide: 10, bags: 20, cap: 8, fixedBag: 8, permitted: 149, restricted: 11,
   noPass: true, autoOpen: true, skipOnWrong: true, lockstep: true,
   circulate: true, recircCap: 400
 };
@@ -506,6 +506,7 @@ function start() {
   you.stabs = 0; opp.stabs = 0;
   you.lights = 0; opp.lights = 0;
   you.screws = 0; opp.screws = 0;
+  you.fishes = 0; opp.fishes = 0;
   wallBare = false;
   $('tool').hidden = true;
   you.skipNext = false; opp.skipNext = false;
@@ -574,6 +575,8 @@ function briefText() {
       '<li><b>Screwdriver</b> — four in the game. Turn any one sign over, green to red or red to green.</li>' +
       '<li><b>Lighter</b> — four in the game. Strike it on a red sign: that sign and every red sign joined to it, ' +
       'up, down or sideways, burns back to green.</li>' +
+      '<li><b>Fish</b> — two in the game. Pick a row of the wall and turn every sign in it over: green to ' +
+      'red, red to green.</li>' +
       '<li><b>Knife</b> — three in the game. Stab any sign and nothing can turn it this round. Fire stops at it.</li>' +
       '</ul>' +
       '<p class="brief-lede">If the wall ever has <strong>no red sign at all</strong>, the shift ends there and ' +
@@ -1090,6 +1093,10 @@ function seize(card) {
       you.screws = (you.screws || 0) + 1;
       toast('A screwdriver — you can turn a sign over before the next bag', true);
     }
+    if (M.lean && isFish(card.item)) {
+      you.fishes = (you.fishes || 0) + 1;
+      toast('A fish — you can turn a whole row over before the next bag', true);
+    }
     const worth = creditSeizure(you, card.item);
     pop(c.x - 24, c.y - 28, worth === 2 ? 'Yours \u00b7 2' : '+' + VP_SEIZED, 'good');
   }
@@ -1569,6 +1576,15 @@ function flipsThisRound() {
 function isKnife(it)       { return !!(it && it.design && it.design.indexOf('lean_knives') === 0); }
 function isLighter(it)     { return !!(it && it.design && it.design.indexOf('lean_lighters') === 0); }
 function isScrewdriver(it) { return !!(it && it.design && it.design.indexOf('lean_screwdrivers') === 0); }
+function isFish(it)        { return !!(it && it.design && it.design.indexOf('lean_fish') === 0); }
+
+/* rows of the wall are lettered A, B, C… from the top */
+function rowOf(i)    { return Math.floor(i / LEAN_COLS); }
+function rowName(i)  { return String.fromCharCode(65 + rowOf(i)); }
+function rowReach(i) {
+  if (!board[i]) return [];
+  return board.filter((r, k) => rowOf(k) === rowOf(i) && !r.stabbed);
+}
 
 /* what each tool would change if used on square i, without doing it */
 function fireReach(i) {
@@ -1627,6 +1643,30 @@ const TOOLS = {
     said: (who, rows) => who + ' burnt ' + (rows.length > 1 ? rows.length + ' signs' : 'a sign') +
                          ' off the wall: ' + names(rows) + ' allowed again'
   },
+  fish: {
+    count: 'fishes', reach: rowReach,
+    kicker: 'You took a fish', head: 'Turn a whole row over',
+    lede: 'Pick any sign and its whole <strong>row</strong> turns over: every green sign in it turns ' +
+          '<strong>red</strong> and every red one turns <strong>green</strong>. Stabbed signs stay as they are.',
+    skip: 'Keep the fish for later',
+    hint: (r, reach) => {
+      const i = board.indexOf(r);
+      if (!reach.length) return 'Row ' + rowName(i) + ' is all stabbed — nothing will turn.';
+      const up = reach.filter(x => !x.banned), down = reach.filter(x => x.banned);
+      return 'Row ' + rowName(i) + ' — ' +
+        (up.length ? 'to red: ' + names(up) : '') +
+        (up.length && down.length ? '; ' : '') +
+        (down.length ? 'to green: ' + names(down) : '') + '.';
+    },
+    apply: rows => { rows.forEach(r => { r.banned = !r.banned; r.lit = true; }); },
+    said: (who, rows) => {
+      const i = board.indexOf(rows[0]);
+      const red = rows.filter(x => x.banned), green = rows.filter(x => !x.banned);
+      return who + ' turned row ' + rowName(i) + ' over' +
+        (red.length ? ': no ' + names(red) : '') +
+        (green.length ? (red.length ? '; ' : ': ') + names(green) + ' allowed' : '');
+    }
+  },
   screw: {
     count: 'screws', reach: turnReach,
     kicker: 'You took a screwdriver', head: 'Turn a sign over',
@@ -1679,6 +1719,7 @@ function offerTool(kind, then) {
   list.innerHTML = board.map((r, i) =>
     '<button class="light-pick light-' + (r.banned ? 'ban' : 'ok') + (r.stabbed ? ' stabbed' : '') +
     '" type="button" data-i="' + i + '" title="' + r.cat.label + '">' +
+    (i % LEAN_COLS === 0 ? '<i class="row-tag">' + rowName(i) + '</i>' : '') +
     '<img src="assets/ui/signs/' + (r.banned ? r.cat.banned : r.cat.allowed) + '" alt=""><b>' + r.cat.label + '</b></button>'
   ).join('');
   const buttons = [].slice.call(list.querySelectorAll('.light-pick'));
@@ -1742,7 +1783,7 @@ function oppPlay(kind, i) {
 }
 
 function oppStabs() {
-  if (!(opp.stabs > 0) || !((you.lights || 0) + (you.screws || 0))) return;
+  if (!(opp.stabs > 0) || !((you.lights || 0) + (you.screws || 0) + (you.fishes || 0))) return;
   const left = piecesLeft();
   let best = -1, most = -1;
   board.forEach((r, i) => {
@@ -1786,6 +1827,25 @@ function oppTools() {
     });
     if (best >= 0) oppPlay('screw', best);
   }
+  /* B turns a row over when it gains red overall (more green signs in the
+     row than red ones, counted by pieces still going round), or when it is
+     ahead and the row holds the last of the red, which ends the shift. */
+  if (wallBare) return;
+  if (opp.fishes > 0) {
+    const left = piecesLeft(), ahead = (opp.hits || 0) > (you.hits || 0);
+    const reds = board.filter(r => r.banned).length;
+    let best = -1, most = 0;
+    for (let row = 0; row * LEAN_COLS < board.length; row++) {
+      const reach = rowReach(row * LEAN_COLS);
+      const redsHere = reach.filter(r => r.banned).length;
+      const bare = redsHere === reds && reach.every(r => r.banned);
+      if (bare && ahead) { best = row * LEAN_COLS; break; }
+      if (bare) continue;                                  /* would end it while not ahead */
+      const gain = reach.reduce((n, r) => n + (r.banned ? -1 : 1) * ((left[r.cat.tag] || 0) + 1), 0);
+      if (gain > most + Math.random()) { most = gain; best = row * LEAN_COLS; }
+    }
+    if (best >= 0) oppPlay('fish', best);
+  }
 }
 
 /* Before a round: Officer B draws a knife first, where you can see it, then
@@ -1798,7 +1858,7 @@ function beginRound() {
   board.forEach(r => { r.lit = false; });
   if (M.lean) {
     oppStabs();
-    const steps = ['stab', 'light', 'screw'].map(k => then => offerTool(k, then));
+    const steps = ['stab', 'light', 'screw', 'fish'].map(k => then => offerTool(k, then));
     const run = () => {
       if (over || wallBare) return;
       const step = steps.shift();
@@ -2079,6 +2139,7 @@ function oppSearch(contraband, size, rush) {
       if (M.lean && isKnife(it)) opp.stabs = (opp.stabs || 0) + 1;
       if (M.lean && isLighter(it)) opp.lights = (opp.lights || 0) + 1;
       if (M.lean && isScrewdriver(it)) opp.screws = (opp.screws || 0) + 1;
+      if (M.lean && isFish(it)) opp.fishes = (opp.fishes || 0) + 1;
       creditSeizure(opp, it);
       pop(SEIZE_THEM.x + SEIZE_THEM.w - 60, SEIZE_THEM.y - 26,
           '+' + VP_SEIZED, 'theirs');

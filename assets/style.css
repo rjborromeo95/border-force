@@ -867,3 +867,7 @@ body.no-tally .notice-banned{display:none}
 .lensview .spin{position:relative;width:100%;height:100%}
 .card.item .spin img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .menu-modes.menu-modes-one,body.compact .menu-modes.menu-modes-one{grid-template-columns:minmax(0,560px);justify-content:center}
+
+/* row letters in the picker, so "row B" means something */
+.light-pick .row-tag{position:absolute;left:-2px;top:-8px;font:700 .75rem/1 'Barlow Condensed',sans-serif;
+  background:#3c372a;color:#f4f1e7;border-radius:3px;padding:2px 4px;font-style:normal}

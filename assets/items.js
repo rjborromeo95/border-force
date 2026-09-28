@@ -968,20 +968,66 @@ const LEAN_PIECES = [
              { img: 'lean_books_3_b.png', tags: ['book', 'yellow'] } ] },
   { key: 'lean_books_4',     name: "Purple book",      sound: 'book',   copies: 3,
     sides: [ { img: 'lean_books_4_a.png', tags: ['book'] },
-             { img: 'lean_books_4_b.png', tags: ['book'] } ] }
+             { img: 'lean_books_4_b.png', tags: ['book'] } ] },
+
+  /* Devices. The yellow-cased phone counts as yellow on both sides, the
+     laptop has its smiley sticker on the back only, and the Game Boy counts
+     as white. The tablet and the leather-cased phone have no colour. */
+  { key: 'lean_devices_0', name: "Yellow phone", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_devices_0_a.png', tags: ['device', 'yellow'] },
+             { img: 'lean_devices_0_b.png', tags: ['device', 'yellow'] } ] },
+  { key: 'lean_devices_1', name: "Game Boy", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_devices_1_a.png', tags: ['device', 'white'] },
+             { img: 'lean_devices_1_b.png', tags: ['device', 'white'] } ] },
+  { key: 'lean_devices_2', name: "Tablet", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_devices_2_a.png', tags: ['device'] },
+             { img: 'lean_devices_2_b.png', tags: ['device'] } ] },
+  { key: 'lean_devices_3', name: "Leather phone", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_devices_3_a.png', tags: ['device'] },
+             { img: 'lean_devices_3_b.png', tags: ['device'] } ] },
+  { key: 'lean_devices_4', name: "Laptop", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_devices_4_a.png', tags: ['device'] },
+             { img: 'lean_devices_4_b.png', tags: ['device', 'smiley'] } ] },
+
+  /* Fish. Only two in the game, one of each, because they are tools: take
+     one and you can turn a whole row of the wall over. No colour. */
+  { key: 'lean_fish_0', name: "Long fish", sound: 'rustle', copies: 1,
+    sides: [ { img: 'lean_fish_0_a.png', tags: ['fish'] },
+             { img: 'lean_fish_0_b.png', tags: ['fish'] } ] },
+  { key: 'lean_fish_1', name: "Fat fish", sound: 'rustle', copies: 1,
+    sides: [ { img: 'lean_fish_1_a.png', tags: ['fish'] },
+             { img: 'lean_fish_1_b.png', tags: ['fish'] } ] },
+
+  /* Towels. The red one has a football on one side, the white one with the
+     yellow edge a smiley on one side. */
+  { key: 'lean_towels_0', name: "Black towel", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_towels_0_a.png', tags: ['towel', 'black'] },
+             { img: 'lean_towels_0_b.png', tags: ['towel', 'black'] } ] },
+  { key: 'lean_towels_1', name: "Red towel", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_towels_1_a.png', tags: ['towel', 'red', 'ball'] },
+             { img: 'lean_towels_1_b.png', tags: ['towel', 'red'] } ] },
+  { key: 'lean_towels_2', name: "White towel", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_towels_2_a.png', tags: ['towel', 'white'] },
+             { img: 'lean_towels_2_b.png', tags: ['towel', 'white'] } ] },
+  { key: 'lean_towels_3', name: "White smiley towel", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_towels_3_a.png', tags: ['towel', 'white'] },
+             { img: 'lean_towels_3_b.png', tags: ['towel', 'white', 'smiley'] } ] },
+  { key: 'lean_towels_4', name: "Green towel", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_towels_4_a.png', tags: ['towel', 'green'] },
+             { img: 'lean_towels_4_b.png', tags: ['towel', 'green'] } ] }
 ];
 
 /* The pieces that do something when you take them. They are never the ones
    left in the box when the deck is too big for the pouches. */
 function isEffectPiece(key) {
   return key.indexOf('lean_knives') === 0 || key.indexOf('lean_lighters') === 0 ||
-         key.indexOf('lean_screwdrivers') === 0;
+         key.indexOf('lean_screwdrivers') === 0 || key.indexOf('lean_fish') === 0;
 }
 
 /* The board is a grid, five across, because the lighter needs to know what is
    next to what. The signs are shuffled into a new layout every game (see
    setUpBoard in game.js), so the order below is only the list. */
-const LEAN_COLS = 7;   /* twenty-one signs, seven across and three down */
+const LEAN_COLS = 6;   /* twenty-four signs, six across and four down */
 const LEAN_CATEGORIES = [
   { key: 'knife',       label: 'Knives',       tag: 'knife',       allowed: 'knife_ok.png',             banned: 'no_knives.png',        start: true },
   { key: 'hat',         label: 'Hats',         tag: 'hat',         allowed: 'hats_allowed.png',         banned: 'no_hats.png',          start: false },
@@ -1000,12 +1046,15 @@ const LEAN_CATEGORIES = [
   { key: 'black',       label: 'Black',        tag: 'black',       allowed: 'black_allowed.png',        banned: 'no_black.png',         start: false },
   { key: 'instruments', label: 'Instruments',  tag: 'instruments', allowed: 'instruments_allowed.png',  banned: 'no_music.png',         start: false },
   { key: 'belts',       label: 'Belts',        tag: 'belt',        allowed: 'belts_allowed.png',        banned: 'no_belts.png',         start: false },
-  { key: 'teddy',       label: 'Teddies',      tag: 'teddy',       allowed: 'teddies_allowed.png',      banned: 'no_teddys.png',        start: false },
+  { key: 'teddy',       label: 'Teddies',      tag: 'teddy',       allowed: 'teddies_allowed.png',      banned: 'no_teddies.png',        start: false },
   { key: 'smiley',      label: 'Smiley faces', tag: 'smiley',      allowed: 'smiley_faces_allowed.png', banned: 'no_smiley_faces.png',  start: false },
   { key: 'screwdriver', label: 'Screwdrivers', tag: 'screwdriver', allowed: 'screwdriver_allowed.png',  banned: 'no_screwdriver.png',   start: true },
-  { key: 'ball',        label: 'Balls',        tag: 'ball',        allowed: 'bowling_ball_allowed.png', banned: 'no_bowling_balls.png', start: false },
+  { key: 'ball',        label: 'Balls',        tag: 'ball',        allowed: 'balls_allowed.png',        banned: 'no_balls.png', start: false },
   { key: 'book',        label: 'Books',        tag: 'book',        allowed: 'books_allowed.png',        banned: 'no_books.png',         start: false },
-  { key: 'underwear',   label: 'Underwear',    tag: 'underwear',   allowed: 'underwear_allowed.png',    banned: 'no_underwear.png',     start: false }
+  { key: 'underwear',   label: 'Underwear',    tag: 'underwear',   allowed: 'underwear_allowed.png',    banned: 'no_underwear.png',     start: false },
+  { key: 'towel',       label: 'Towels',       tag: 'towel',       allowed: 'towels_allowed.png',       banned: 'no_towels.png',        start: false },
+  { key: 'fish',        label: 'Fish',         tag: 'fish',        allowed: 'fish_allowed.png',         banned: 'no_fish.png',          start: true },
+  { key: 'device',      label: 'Devices',      tag: 'device',      allowed: 'devices_allowed.png',      banned: 'no_devices.png',       start: false }
 ];
 
 /* the four signs touching a square of the grid — fewer at the edges */
@@ -1039,9 +1088,9 @@ function leanDeck() {
       });
     }
   });
-  /* A hundred and thirty-one pieces and sixteen pouches of eight: three stay
-     in the box each shift, chosen at random — but never a knife, a lighter or
-     a screwdriver, so all eleven of those are always in play. */
+  /* A hundred and sixty-three pieces and twenty pouches of eight: three stay
+     in the box each shift, chosen at random — but never a tool (knife,
+     lighter, screwdriver or fish), so all thirteen are always in play. */
   const room = DEAL.trays * DEAL.cap;
   while (d.length > room) {
     const plain = d.filter(x => !x.restricted);
@@ -1090,7 +1139,7 @@ const CATEGORIES = [
   { key: 'shoes',      label: 'Shoes',           tag: 'shoe',       allowed: 'shoes_allowed.png',         banned: 'no_shoes.png',            start: false },
   { key: 'snacks',     label: 'Snacks',          tag: 'snack',      allowed: 'snacks_allowed.png',        banned: 'no_snacks.png',           start: false },
   { key: 'tshirts',    label: 'T-shirts',        tag: 'tshirt',     allowed: 't_shirts_allowed.png',      banned: 'no_t_shirts.png',         start: false },
-  { key: 'teddies',    label: 'Soft toys',       tag: 'teddy',      allowed: 'teddies_allowed.png',       banned: 'no_teddys.png',           start: false },
+  { key: 'teddies',    label: 'Soft toys',       tag: 'teddy',      allowed: 'teddies_allowed.png',       banned: 'no_teddies.png',           start: false },
   { key: 'toothbrush', label: 'Toothbrushes',    tag: 'toothbrush', allowed: 'toothbrush_allowed.png',    banned: 'no_toothbrushes.png',     start: false },
   { key: 'tote',       label: 'Tote bags',       tag: 'tote',       allowed: 'tote_bag_allowed.png',      banned: 'no_tote_bags.png',        start: false },
   { key: 'trousers',   label: 'Trousers',        tag: 'trousers',   allowed: 'trousers_allowed.png',      banned: 'no_trousers.png',         start: false },
