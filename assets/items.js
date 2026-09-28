@@ -1014,20 +1014,68 @@ const LEAN_PIECES = [
              { img: 'lean_towels_3_b.png', tags: ['towel', 'white', 'smiley'] } ] },
   { key: 'lean_towels_4', name: "Green towel", sound: 'cloth', copies: 3,
     sides: [ { img: 'lean_towels_4_a.png', tags: ['towel', 'green'] },
-             { img: 'lean_towels_4_b.png', tags: ['towel', 'green'] } ] }
+             { img: 'lean_towels_4_b.png', tags: ['towel', 'green'] } ] },
+
+  /* Cameras. The teddy camera is a teddy from both sides; the red one has a
+     drum sticker, an instrument, on its back only. */
+  { key: 'lean_cameras_0', name: "Teddy camera", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_cameras_0_a.png', tags: ['camera', 'teddy'] },
+             { img: 'lean_cameras_0_b.png', tags: ['camera', 'teddy'] } ] },
+
+  { key: 'lean_cameras_1', name: "Red camera", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_cameras_1_a.png', tags: ['camera', 'red'] },
+             { img: 'lean_cameras_1_b.png', tags: ['camera', 'red', 'instruments'] } ] },
+
+  { key: 'lean_cameras_2', name: "Digital camera", sound: 'plastic', copies: 3,
+    sides: [ { img: 'lean_cameras_2_a.png', tags: ['camera'] },
+             { img: 'lean_cameras_2_b.png', tags: ['camera'] } ] },
+
+  /* Shoes. The blue one has a buckled strap, so it counts as a belt. The red
+     flats are red from the top only — underneath they are tan soles. */
+  { key: 'lean_shoes_0', name: "Black trainer", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_shoes_0_a.png', tags: ['shoe', 'black'] },
+             { img: 'lean_shoes_0_b.png', tags: ['shoe', 'black'] } ] },
+
+  { key: 'lean_shoes_1', name: "Yellow shoe", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_shoes_1_a.png', tags: ['shoe', 'yellow'] },
+             { img: 'lean_shoes_1_b.png', tags: ['shoe', 'yellow'] } ] },
+
+  { key: 'lean_shoes_2', name: "Blue buckle shoe", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_shoes_2_a.png', tags: ['shoe', 'belt'] },
+             { img: 'lean_shoes_2_b.png', tags: ['shoe', 'belt'] } ] },
+
+  { key: 'lean_shoes_3', name: "Green boot", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_shoes_3_a.png', tags: ['shoe', 'green'] },
+             { img: 'lean_shoes_3_b.png', tags: ['shoe', 'green'] } ] },
+
+  { key: 'lean_shoes_4', name: "Red flats", sound: 'cloth', copies: 3,
+    sides: [ { img: 'lean_shoes_4_a.png', tags: ['shoe', 'red'] },
+             { img: 'lean_shoes_4_b.png', tags: ['shoe'] } ] },
+
+  /* Bombs. Only two in the game, one of each, because they are tools: set
+     one off and the whole wall is shuffled and dealt again. The dynamite was
+     drawn once, so its back is its mirror image. */
+  { key: 'lean_bombs_0', name: "Pipe bomb", sound: 'light', copies: 1,
+    sides: [ { img: 'lean_bombs_0_a.png', tags: ['bomb'] },
+             { img: 'lean_bombs_0_b.png', tags: ['bomb'] } ] },
+
+  { key: 'lean_bombs_1', name: "Dynamite", sound: 'light', copies: 1,
+    sides: [ { img: 'lean_bombs_1_a.png', tags: ['bomb'] },
+             { img: 'lean_bombs_1_b.png', tags: ['bomb'] } ] }
 ];
 
 /* The pieces that do something when you take them. They are never the ones
    left in the box when the deck is too big for the pouches. */
 function isEffectPiece(key) {
   return key.indexOf('lean_knives') === 0 || key.indexOf('lean_lighters') === 0 ||
-         key.indexOf('lean_screwdrivers') === 0 || key.indexOf('lean_fish') === 0;
+         key.indexOf('lean_screwdrivers') === 0 || key.indexOf('lean_fish') === 0 ||
+         key.indexOf('lean_bombs') === 0;
 }
 
 /* The board is a grid, five across, because the lighter needs to know what is
    next to what. The signs are shuffled into a new layout every game (see
    setUpBoard in game.js), so the order below is only the list. */
-const LEAN_COLS = 6;   /* twenty-four signs, six across and four down */
+const LEAN_COLS = 7;   /* twenty-seven signs, seven across and four down, one empty square */
 const LEAN_CATEGORIES = [
   { key: 'knife',       label: 'Knives',       tag: 'knife',       allowed: 'knife_ok.png',             banned: 'no_knives.png',        start: true },
   { key: 'hat',         label: 'Hats',         tag: 'hat',         allowed: 'hats_allowed.png',         banned: 'no_hats.png',          start: false },
@@ -1054,7 +1102,10 @@ const LEAN_CATEGORIES = [
   { key: 'underwear',   label: 'Underwear',    tag: 'underwear',   allowed: 'underwear_ok.png',         banned: 'no_underwear.png',     start: false },
   { key: 'towel',       label: 'Towels',       tag: 'towel',       allowed: 'towels_allowed.png',       banned: 'no_towels.png',        start: false },
   { key: 'fish',        label: 'Fish',         tag: 'fish',        allowed: 'fish_allowed.png',         banned: 'no_fish.png',          start: true },
-  { key: 'device',      label: 'Devices',      tag: 'device',      allowed: 'devices_allowed.png',      banned: 'no_devices.png',       start: false }
+  { key: 'device',      label: 'Devices',      tag: 'device',      allowed: 'devices_allowed.png',      banned: 'no_devices.png',       start: false },
+  { key: 'camera',      label: 'Cameras',      tag: 'camera',      allowed: 'camera_allowed.png',       banned: 'no_camera.png',        start: false },
+  { key: 'shoe',        label: 'Shoes',        tag: 'shoe',        allowed: 'shoes_allowed.png',        banned: 'no_shoes.png',         start: false },
+  { key: 'bomb',        label: 'Bombs',        tag: 'bomb',        allowed: 'bombs_ok.png',             banned: 'no_bombs.png',         start: true }
 ];
 
 /* the four signs touching a square of the grid — fewer at the edges */
@@ -1088,9 +1139,10 @@ function leanDeck() {
       });
     }
   });
-  /* A hundred and sixty-three pieces and twenty pouches of eight: three stay
-     in the box each shift, chosen at random — but never a tool (knife,
-     lighter, screwdriver or fish), so all thirteen are always in play. */
+  /* A hundred and eighty-nine pieces and twenty-two pouches of eight:
+     thirteen stay in the box each shift, chosen at random — but never a tool
+     (knife, lighter, screwdriver, fish or bomb), so all fifteen are always in
+     play. */
   const room = DEAL.trays * DEAL.cap;
   while (d.length > room) {
     const plain = d.filter(x => !x.restricted);

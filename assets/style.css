@@ -871,3 +871,7 @@ body.no-tally .notice-banned{display:none}
 /* row letters in the picker, so "row B" means something */
 .light-pick .row-tag{position:absolute;left:-2px;top:-8px;font:700 .75rem/1 'Barlow Condensed',sans-serif;
   background:#3c372a;color:#f4f1e7;border-radius:3px;padding:2px 4px;font-style:normal}
+
+.bomb-go{font:700 1.2rem/1 'Barlow Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase;
+  background:#c0483f;color:#fff;border:0;border-radius:6px;padding:1rem;cursor:pointer}
+.bomb-go:hover{background:#a63a32}

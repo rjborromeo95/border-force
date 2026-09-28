@@ -62,7 +62,7 @@ const GAMES = {
 GAMES.lean = {
   key: 'lean', name: 'Lean shift', tray: 10000, cut: true, reveal: false,
   lean: true, wide: true, useBoard: true, banAfter: 3, banCount: 2,
-  perSide: 10, bags: 20, cap: 8, fixedBag: 8, permitted: 149, restricted: 11,
+  perSide: 11, bags: 22, cap: 8, fixedBag: 8, permitted: 174, restricted: 15,
   noPass: true, autoOpen: true, skipOnWrong: true, lockstep: true,
   circulate: true, recircCap: 400
 };
@@ -507,6 +507,7 @@ function start() {
   you.lights = 0; opp.lights = 0;
   you.screws = 0; opp.screws = 0;
   you.fishes = 0; opp.fishes = 0;
+  you.bombs = 0; opp.bombs = 0;
   wallBare = false;
   $('tool').hidden = true;
   you.skipNext = false; opp.skipNext = false;
@@ -577,6 +578,8 @@ function briefText() {
       'up, down or sideways, burns back to green.</li>' +
       '<li><b>Fish</b> — two in the game. Pick a row of the wall and turn every sign in it over: green to ' +
       'red, red to green.</li>' +
+      '<li><b>Bomb</b> — two in the game. The whole wall is shuffled into a new layout and the same number of ' +
+      'signs as were red end up red, chosen at random.</li>' +
       '<li><b>Knife</b> — three in the game. Stab any sign and nothing can turn it this round. Fire stops at it.</li>' +
       '</ul>' +
       '<p class="brief-lede">If the wall ever has <strong>no red sign at all</strong>, the shift ends there and ' +
@@ -1097,6 +1100,10 @@ function seize(card) {
       you.fishes = (you.fishes || 0) + 1;
       toast('A fish — you can turn a whole row over before the next bag', true);
     }
+    if (M.lean && isBomb(card.item)) {
+      you.bombs = (you.bombs || 0) + 1;
+      toast('A bomb — you can blow up the wall before the next bag', true);
+    }
     const worth = creditSeizure(you, card.item);
     pop(c.x - 24, c.y - 28, worth === 2 ? 'Yours \u00b7 2' : '+' + VP_SEIZED, 'good');
   }
@@ -1577,6 +1584,27 @@ function isKnife(it)       { return !!(it && it.design && it.design.indexOf('lea
 function isLighter(it)     { return !!(it && it.design && it.design.indexOf('lean_lighters') === 0); }
 function isScrewdriver(it) { return !!(it && it.design && it.design.indexOf('lean_screwdrivers') === 0); }
 function isFish(it)        { return !!(it && it.design && it.design.indexOf('lean_fish') === 0); }
+function isBomb(it)        { return !!(it && it.design && it.design.indexOf('lean_bombs') === 0); }
+
+/* The bomb: every sign that is not stabbed is gathered up, shuffled and
+   dealt back into the empty squares, and then exactly as many of them as
+   were red before are made red again, chosen at random. Stabbed signs keep
+   their square and their colour. It never changes how much red there is, so
+   it can never empty the wall. */
+function bombReach() { return board.filter(r => !r.stabbed); }
+function detonate() {
+  const free = [], cats = [];
+  let reds = 0;
+  board.forEach((r, i) => { if (!r.stabbed) { free.push(i); cats.push(r.cat); if (r.banned) reds++; } });
+  shuffle(cats);
+  const redAt = shuffle(free.slice()).slice(0, reds);
+  free.forEach((i, k) => {
+    const wasRed = board[i].banned;
+    board[i] = { cat: cats[k], banned: redAt.indexOf(i) >= 0 };
+    board[i].lit = board[i].banned;
+  });
+  return free.map(i => board[i]);
+}
 
 /* rows of the wall are lettered A, B, C… from the top */
 function rowOf(i)    { return Math.floor(i / LEAN_COLS); }
@@ -1642,6 +1670,18 @@ const TOOLS = {
     apply: rows => { rows.forEach(r => { r.banned = false; r.lit = true; }); },
     said: (who, rows) => who + ' burnt ' + (rows.length > 1 ? rows.length + ' signs' : 'a sign') +
                          ' off the wall: ' + names(rows) + ' allowed again'
+  },
+  bomb: {
+    count: 'bombs', reach: bombReach, noTarget: true,
+    kicker: 'You took a bomb', head: 'Blow up the wall',
+    lede: 'Every sign comes down, gets shuffled and goes back up in a new order — and the same number ' +
+          'of signs as are red now end up red again, chosen at random. Stabbed signs stay exactly where they are.',
+    skip: 'Keep the bomb for later',
+    hint: () => '',
+    apply: () => { detonate(); },
+    said: (who, rows) => who + ' set off a bomb: the wall has been shuffled, ' +
+                         board.filter(r => r.banned).length + ' signs red — ' +
+                         names(board.filter(r => r.banned))
   },
   fish: {
     count: 'fishes', reach: rowReach,
@@ -1715,6 +1755,22 @@ function offerTool(kind, then) {
   $('toolSkip').textContent = tool.skip;
   $('toolCount').textContent = you[tool.count] > 1 ? 'You have ' + you[tool.count] + '.' : '';
   const list = $('toolList');
+  if (tool.noTarget) {
+    list.style.gridTemplateColumns = 'minmax(0, 1fr)';
+    list.innerHTML = '<button class="bomb-go" type="button">Set it off</button>';
+    $('toolHint').textContent = board.filter(r => r.banned).length + ' signs are red now; ' +
+      board.filter(r => r.banned).length + ' will be red after — just not necessarily the same ones.';
+    list.querySelector('.bomb-go').onclick = () => {
+      $('tool').hidden = true; paused = false;
+      you[tool.count]--;
+      useTool(kind, 0);
+      toast(tool.said('You'), true);
+      then();
+    };
+    $('toolSkip').onclick = () => { $('tool').hidden = true; paused = false; then(); };
+    $('tool').hidden = false;
+    return;
+  }
   list.style.gridTemplateColumns = 'repeat(' + LEAN_COLS + ', minmax(0, 1fr))';
   list.innerHTML = board.map((r, i) =>
     '<button class="light-pick light-' + (r.banned ? 'ban' : 'ok') + (r.stabbed ? ' stabbed' : '') +
@@ -1783,7 +1839,7 @@ function oppPlay(kind, i) {
 }
 
 function oppStabs() {
-  if (!(opp.stabs > 0) || !((you.lights || 0) + (you.screws || 0) + (you.fishes || 0))) return;
+  if (!(opp.stabs > 0) || !((you.lights || 0) + (you.screws || 0) + (you.fishes || 0) + (you.bombs || 0))) return;
   const left = piecesLeft();
   let best = -1, most = -1;
   board.forEach((r, i) => {
@@ -1846,6 +1902,14 @@ function oppTools() {
     }
     if (best >= 0) oppPlay('fish', best);
   }
+  /* B sets off a bomb when it is behind — shaking the wall up is the gamble
+     of the player who is losing. */
+  if (wallBare) return;
+  if (opp.bombs > 0 && (opp.hits || 0) < (you.hits || 0)) {
+    opp.bombs--;
+    useTool('bomb', 0);
+    toast(TOOLS.bomb.said('Officer B'), false);
+  }
 }
 
 /* Before a round: Officer B draws a knife first, where you can see it, then
@@ -1858,7 +1922,7 @@ function beginRound() {
   board.forEach(r => { r.lit = false; });
   if (M.lean) {
     oppStabs();
-    const steps = ['stab', 'light', 'screw', 'fish'].map(k => then => offerTool(k, then));
+    const steps = ['stab', 'light', 'screw', 'fish', 'bomb'].map(k => then => offerTool(k, then));
     const run = () => {
       if (over || wallBare) return;
       const step = steps.shift();
@@ -2140,6 +2204,7 @@ function oppSearch(contraband, size, rush) {
       if (M.lean && isLighter(it)) opp.lights = (opp.lights || 0) + 1;
       if (M.lean && isScrewdriver(it)) opp.screws = (opp.screws || 0) + 1;
       if (M.lean && isFish(it)) opp.fishes = (opp.fishes || 0) + 1;
+      if (M.lean && isBomb(it)) opp.bombs = (opp.bombs || 0) + 1;
       creditSeizure(opp, it);
       pop(SEIZE_THEM.x + SEIZE_THEM.w - 60, SEIZE_THEM.y - 26,
           '+' + VP_SEIZED, 'theirs');
