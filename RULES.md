@@ -5,12 +5,12 @@ what is inside, seize what is forbidden today, leave everything else.
 
 ## The pieces
 
-A hundred and sixty-three punch-out pieces, sixty-three designs: three
-knives, four lighters, four screwdrivers, two fish, and three each of five
-hats, five t-shirts, five trousers, five dresses, five tote bags, five bottles,
-five pairs of underwear, five books, five devices and five towels. Twenty
-suitcases of eight, so three ordinary pieces stay in the box each game — never
-a tool.
+A hundred and eighty-nine punch-out pieces, seventy-three designs: three
+knives, four lighters, four screwdrivers, two fish, two bombs, and three each of
+five hats, five t-shirts, five trousers, five dresses, five tote bags, five
+bottles, five pairs of underwear, five books, five devices, five towels, three
+cameras and five shoes. Twenty-two suitcases of eight, so thirteen ordinary
+pieces stay in the box each game — never a tool.
 
 **Every piece has two sides**, and either side can get it confiscated. A piece
 is packed whichever way up it landed — sometimes back up — and it stays that
@@ -20,20 +20,21 @@ every time the bag is opened.
 
 ## The wall
 
-Twenty-four signs in a grid six across and four down — rows A to D from the
-top — **shuffled into a new layout every game**: Knives, Lighters, Screwdrivers, Hats, T-shirts, Trousers,
-Dresses, Tote bags, Bottles, Books, Underwear, Devices, Towels, Fish,
-Instruments, Belts, Teddies, Smiley faces, Balls, and the colours Green, White,
-Red, Yellow and Black.
+Twenty-seven signs in a grid seven across and four down — rows A to D from
+the top, one empty square — **shuffled into a new layout every game**: Knives,
+Lighters, Screwdrivers, Fish, Bombs, Hats, T-shirts, Trousers, Dresses, Tote
+bags, Bottles, Books, Underwear, Devices, Towels, Cameras, Shoes, Instruments,
+Belts, Teddies, Smiley faces, Balls, and the colours Green, White, Red, Yellow
+and Black.
 
-Knives, Lighters, Screwdrivers and Fish start red; everything else starts green. A
+Knives, Lighters, Screwdrivers, Fish and Bombs start red; everything else starts green. A
 piece is forbidden if anything on either side of it matches a red sign.
 
 **The wall never turns by itself.** It only moves when somebody uses a tool.
 
 ## Tools
 
-Knives, lighters, screwdrivers and fish score like anything else when seized while
+Knives, lighters, screwdrivers, fish and bombs score like anything else when seized while
 their sign is red, and they also go into your hand. Use them before the next
 bag.
 
@@ -45,11 +46,14 @@ bag.
 - **Fish** (two). Pick a row of the wall and turn every sign in it over:
   green turns red, red turns green. Stabbed signs in the row stay as they
   are.
-- **Knife** (three). Stab any sign. Nothing can turn it this round — not a
-  screwdriver, not a fish — and fire stops at it.
+- **Bomb** (two). The whole wall comes down, is shuffled and goes back up
+  in a new order, and exactly as many signs as were red before end up red,
+  chosen at random. Stabbed signs keep their square and their colour.
+- **Knife** (three). Stab any sign. Nothing can turn or move it this round —
+  not a screwdriver, a fish or a bomb — and fire stops at it.
 
 Before each bag, Officer B stabs first, then you use your knife, lighter,
-screwdriver and fish in that order, then B uses theirs.
+screwdriver, fish and bomb in that order, then B uses theirs.
 
 ## Scoring and the end
 
@@ -69,15 +73,25 @@ The game ends when either:
   - The black tote shows them on both sides.
   - The laptop has one as a sticker on its back.
   - One white towel has one on one side.
-- **Teddies:** the white dress, front only.
+- **Teddies:**
+  - The white dress, front only.
+  - The teddy camera, both sides.
+- **Belts:** the green hat, and the blue buckle shoe.
 - **Balls:**
   - The tennis tote, front only.
   - The red towel's football, one side only.
-- **Instruments:** the guitar t-shirt, and the piano book, front only.
+- **Instruments:**
+  - The guitar t-shirt.
+  - The piano book, front only.
+  - The red camera's drum sticker, back only.
 - **Colours:**
   - The red wine counts as red.
   - The yellow book is the only book with a colour.
   - The yellow-cased phone counts as yellow.
   - The Game Boy counts as white.
+  - The red camera is red on both sides.
+  - The red flats are red from the top only; underneath they are tan soles.
+  - The black trainer, yellow shoe and green boot are their colours.
+  - The blue buckle shoe has no colour.
   - The blue thong, the blue tote, the rum, the water, the tablet and the leather
     phone have no colour.

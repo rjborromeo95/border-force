@@ -11,7 +11,7 @@ See **RULES.md** for how to play.
 ## Uploading to GitHub from the browser
 
 GitHub's web uploader takes **at most 100 files per upload**. This repo has
-about 235 files, so it comes in three parts, each under 100:
+about 260 files, so it comes in three parts, each under 100:
 
 1. **part 1** — code, signs, sounds, icons (the shell)
 2. **part 2** — cards A–L
@@ -37,8 +37,10 @@ file is uploaded it appears on the next visit.
 - `assets/game.js`:
   - `GAMES.lean` — bag count and size.
   - `setUpBoard()` — shuffles the wall.
-  - `TOOLS` / `offerTool()` — screwdriver, lighter, fish and knife. The fish
-    flips a whole row, `rowReach()`; rows are lettered A–D.
+  - `TOOLS` / `offerTool()` — screwdriver, lighter, fish, bomb and knife.
+    - The fish flips a whole row, `rowReach()`; rows are lettered A–D.
+    - The bomb reshuffles the wall and re-deals the same number of reds,
+      `detonate()`.
   - `oppTools()` / `oppStabs()` — how Officer B uses them.
   - `creditSeizure()` — scoring. `useTool()` ends the game when the wall
   goes bare.
@@ -59,12 +61,17 @@ turning it over never changes its size. Signs are 240×240 transparent PNGs.
   `no_teddies.png`, a new name, so no phone keeps the old one cached.
 - **Devices** uses the `devices_allowed` / `no_devices` pair already in the
   art.
+- **Cameras** (`camera_allowed` / `no_camera`), **Shoes** (`shoes_allowed` /
+  `no_shoes`) and **Bombs** (`bombs_ok` / `no_bombs`) also come from the art
+  folder.
+- **The dynamite** was drawn once, so its back is its mirror image. Replace
+  `lean_bombs_1_b.png` if a proper back gets drawn.
 - **Bottles** uses the alcohol pair; its icon is a bottle, but it could have
   its own art.
 
 ## Known design questions
 
-- **Pace.** Every sign that starts red is a tool (knives, lighters, screwdrivers, fish), so scoring starts slowly
+- **Pace.** Every sign that starts red is a tool (knives, lighters, screwdrivers, fish, bombs), so scoring starts slowly
   until the first tools are seized and used.
 - **The bare-wall ending.** A wall with no red ends the game, and the most
   seized wins. Officer B knows this: when ahead and able to clear the whole
