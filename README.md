@@ -42,6 +42,8 @@ file is uploaded it appears on the next visit.
   - `GAMES.lean` — bag count and size.
   - `setUpBoard()` — shuffles the wall.
   - `TOOLS` / `offerTool()` — screwdriver, lighter, fish, bomb and knife.
+    - The lighter, `fireReach()`: sets one green sign alight (red). Nothing
+      spreads; it cannot be used on a red sign.
     - The gun is not a held tool: `seizeGun()` sets `gunLock`, which skips
       the whole tool step before the next bag, for both players.
     - The fish flips a whole row, `rowReach()`; rows are lettered A–F.
@@ -84,9 +86,8 @@ turning it over never changes its size. Signs are 240×240 transparent PNGs.
 - **Pace.** Every sign that starts red is a tool (knives, lighters, screwdrivers, fish, bombs), so scoring starts slowly
   until the first tools are seized and used.
 - **The bare-wall ending.** A wall with no red ends the game, and the most
-  seized wins. Officer B knows this: when ahead and able to clear the whole
-  wall with one lighter, it does. Otherwise B leaves at least two reds up
-  and never burns the Screwdrivers sign while screwdrivers are going round.
+  seized wins. Officer B knows this: when ahead and able to clear the last red with a
+  fish, it does.
 - **A possible stall.** If the only red signs left are ones whose pieces
   have all been seized, nothing more can be forbidden and no screwdriver can
   be taken legally. The game then runs until the bag-circulation limit ends

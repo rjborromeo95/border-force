@@ -43,9 +43,8 @@ bag.
 
 - **Screwdriver** (four). Turn any one sign over: green to red, or red to
   green.
-- **Lighter** (four). Strike it on a red sign. That sign and every red sign
-  joined to it — above, below or either side, as far as the red runs — goes
-  back to green.
+- **Lighter** (four). Set one green sign alight and it turns red. Nothing
+  spreads, and it does nothing to a sign that is already red.
 - **Fish** (two). Pick a row of the wall and turn every sign in it over:
   green turns red, red turns green. Stabbed signs in the row stay as they
   are.
@@ -56,7 +55,7 @@ bag.
   nobody — you or Officer B — can use a knife, lighter, screwdriver, fish or
   bomb. It works once, the turn it is taken.
 - **Knife** (three). Stab any sign. Nothing can turn or move it this round —
-  not a screwdriver, a fish or a bomb — and fire stops at it.
+  not a screwdriver, a lighter, a fish or a bomb.
 
 Before each bag, Officer B stabs first, then you use your knife, lighter,
 screwdriver, fish and bomb in that order, then B uses theirs.
@@ -68,9 +67,8 @@ the next bag.
 
 The game ends when either:
 - somebody reaches **16** (or 20 in the longer game), or
-- the wall has **no red sign at all** — however that happens, by lighter,
-  screwdriver or fish. Whoever has seized more wins, and equal is a dead heat. Burning
-  the last of the red while you are ahead wins the game.
+- the wall has **no red sign at all** — by screwdriver or fish. Whoever has seized more wins, and equal is a dead heat. Turning
+  the last of the red green while you are ahead wins the game.
 
 ## What counts as what
 
