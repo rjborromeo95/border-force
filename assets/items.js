@@ -1034,7 +1034,7 @@ const LEAN_CATEGORIES = [
   { key: 'tshirt',      label: 'T-shirts',     tag: 'tshirt',      allowed: 't_shirts_allowed.png',     banned: 'no_t_shirts.png',      start: false },
   { key: 'trousers',    label: 'Trousers',     tag: 'trousers',    allowed: 'trousers_allowed.png',     banned: 'no_trousers.png',      start: false },
   { key: 'dress',       label: 'Dresses',      tag: 'dress',       allowed: 'dresses_allowed.png',      banned: 'no_dresses.png',       start: false },
-  { key: 'tote',        label: 'Tote bags',    tag: 'tote',        allowed: 'tote_bag_allowed.png',     banned: 'no_tote_bags.png',     start: false },
+  { key: 'tote',        label: 'Tote bags',    tag: 'tote',        allowed: 'tote_bag_ok.png',          banned: 'no_tote_bags.png',     start: false },
 
   { key: 'green',       label: 'Green',        tag: 'green',       allowed: 'green_allowed.png',        banned: 'no_green.png',         start: false },
   { key: 'white',       label: 'White',        tag: 'white',       allowed: 'white_allowed.png',        banned: 'no_white.png',         start: false },
@@ -1051,7 +1051,7 @@ const LEAN_CATEGORIES = [
   { key: 'screwdriver', label: 'Screwdrivers', tag: 'screwdriver', allowed: 'screwdriver_allowed.png',  banned: 'no_screwdriver.png',   start: true },
   { key: 'ball',        label: 'Balls',        tag: 'ball',        allowed: 'balls_allowed.png',        banned: 'no_balls.png', start: false },
   { key: 'book',        label: 'Books',        tag: 'book',        allowed: 'books_allowed.png',        banned: 'no_books.png',         start: false },
-  { key: 'underwear',   label: 'Underwear',    tag: 'underwear',   allowed: 'underwear_allowed.png',    banned: 'no_underwear.png',     start: false },
+  { key: 'underwear',   label: 'Underwear',    tag: 'underwear',   allowed: 'underwear_ok.png',         banned: 'no_underwear.png',     start: false },
   { key: 'towel',       label: 'Towels',       tag: 'towel',       allowed: 'towels_allowed.png',       banned: 'no_towels.png',        start: false },
   { key: 'fish',        label: 'Fish',         tag: 'fish',        allowed: 'fish_allowed.png',         banned: 'no_fish.png',          start: true },
   { key: 'device',      label: 'Devices',      tag: 'device',      allowed: 'devices_allowed.png',      banned: 'no_devices.png',       start: false }
