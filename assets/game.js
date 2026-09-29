@@ -1376,6 +1376,11 @@ let trayEnd = 0, trayTick = null, oppCut = false, searchedTray = false;
    theirs remembers which bag it was scheduled for, and anything belonging to
    an older one is dropped on the floor. */
 let oppGen = 0;
+/* How slowly Officer B handles a bag: laying pieces out, looking them over
+   and reaching for each forbidden one. 1 is the old speed; higher is slower.
+   It only stretches B's hands, not the clock, so a slow B that runs out of
+   time simply leaves things in the bag. */
+const B_PACE = 1.6;
 /* Every one of B's delayed steps counts down rather than fires on a deadline,
    so a pause for a draft freezes them where they stand instead of letting the
    whole chain arrive at once when it lifts. */
@@ -2145,7 +2150,7 @@ function oppOpen(contraband, size, rush) {
   $('stage').appendChild(lidEl);
   oppCards.push({ el: lidEl, kind: 'lid' });
 
-  const pace = 1 - 0.4 * rush;
+  const pace = (1 - 0.4 * rush) * B_PACE;
   let t = Math.round(rnd(150, 320) * pace);
   oppLater(() => { const lp = lidPark(THEM); settle(lidEl, lp.x, lp.y, 5, Math.round(rnd(280, 420))); }, t);
 
@@ -2191,7 +2196,7 @@ function oppSearch(contraband, size, rush) {
 
   let t = 0;
   found.forEach(it => {
-    t += Math.round(rnd(280, 620));
+    t += Math.round(rnd(280, 620) * B_PACE);
     oppLater(() => {
       const cd = oppCards.find(x => x.item && x.item.uid === it.uid);
       if (!cd) return;
