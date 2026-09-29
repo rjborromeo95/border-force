@@ -53,6 +53,8 @@ file is uploaded it appears on the next visit.
     - The bomb reshuffles the wall and re-deals the same number of reds,
       `detonate()`.
   - `oppTools()` / `oppStabs()` — how Officer B uses them.
+  - `B_PACE` — how slowly Officer B handles a bag (1 = the old speed,
+    currently 1.6). Raise it to make B slower, lower it to make B faster.
   - `creditSeizure()` — scoring. `useTool()` ends the game when the wall
   goes bare.
   - `tumble()` — the random angle a piece comes out at.
