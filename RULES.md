@@ -23,12 +23,15 @@ every time the bag is opened.
 
 ## The wall
 
-Twenty-nine signs in a grid five across and six down — rows A to F from the
-top, with one empty square at the end — **shuffled into a new layout every
-game**: Knives, Lighters, Screwdrivers, Fish, Bombs, Guns, Hats, T-shirts,
-Trousers, Dresses, Tote bags, Bottles, Books, Underwear, Devices, Towels,
-Cameras, Shoes, Snacks, Instruments, Belts, Teddies, Smiley faces, Balls, and
-the colours Green, White, Red, Yellow and Black.
+Thirty-two signs in a grid five across — rows A, B, C… from the top, the last
+row short — **shuffled into a new layout every game**: Knives, Lighters,
+Screwdrivers, Fish, Bombs, Guns, Hats, T-shirts, Trousers, Dresses, Tote bags,
+Bottles, Books, Underwear, Devices, Towels, Cameras, Shoes, Snacks,
+Instruments, Belts, Teddies, Smiley faces, Balls, Glitter, Croissants, Hearts,
+and the colours Green, White, Red, Yellow and Black.
+
+**The no-colours shift** is the same game with the five colour signs taken off,
+leaving twenty-seven.
 
 Knives, Lighters, Screwdrivers, Fish, Bombs and Guns start red; everything else starts green. A
 piece is forbidden if anything on either side of it matches a red sign.
@@ -72,37 +75,22 @@ The game ends when either:
 
 ## What counts as what
 
-- **Smiley faces:**
-  - The beanie and the blue dress show them on the front only.
-  - The black tote shows them on both sides.
-  - The laptop has one as a sticker on its back.
-  - The AK-47 has one on one side of its stock.
-  - One white towel has one on one side.
-- **Teddies:**
-  - The white dress, front only.
-  - The teddy camera, both sides.
-- **Belts:** the green hat, the blue buckle shoe, and the red dress (both
-  sides).
-- **Balls:**
-  - The tennis tote, front only.
-  - The red towel's football, one side only.
-- **Instruments:**
-  - The guitar t-shirt.
-  - The piano book, front only.
-  - The red camera's drum sticker, back only.
-  - The Banjos crisps, both sides.
-- **Bottles:** the tub of gummy bottles, as well as the real bottles.
-- **Colours:**
-  - The red wine counts as red.
-  - The yellow book is the only book with a colour.
-  - The yellow-cased phone counts as yellow.
-  - The Game Boy counts as white.
-  - The red camera is red on both sides.
-  - The red flats are red from the top only; underneath they are tan soles.
-  - The black trainer, yellow shoe and green boot are their colours.
-  - The blue buckle shoe has no colour.
-  - The Banjos crisps are green, the Yummies bar red and the chocolate bar
-    black; the gummy-bottle tub has no colour.
-  - Both pistols count as black; the AK-47 has no colour.
-  - The blue thong, the blue tote, the rum, the water, the tablet and the leather
-    phone have no colour.
+Where a sign is caught from one side of a piece only, that is marked. A piece is
+forbidden if either side matches a red sign.
+
+- **Smiley faces:** beanie (front), blue dress (front), black tote, laptop (back), white smiley towel (back), AK-47 (front).
+- **Hearts:** white t-shirt (front), purple book (back), tablet (back), teddy camera (front), yellow shoe (front), pistol (front).
+- **Glitter:** red cap (front), white trousers (back), blue tote, blue thong (front), Game Boy (back), black trainer.
+- **Croissants:** jeans (back), yellow bra (back), baking book (back), green towel (front).
+- **Instruments:** beanie (back), black t-shirt (back), piano book (front), red camera (back), green boot (front), Banjos crisps.
+- **Teddies:** green t-shirt (front), white dress (front), red briefs (front), yellow book (front), teddy camera.
+- **Balls:** red t-shirt (front), tennis tote (front), yellow phone (back), red towel (front).
+- **Belts:** bucket hat, red belted dress, leather phone (front), blue buckle shoe.
+- **Bottles (beyond the bottles themselves):** gummy bottles.
+- **Colours** (not used in the no-colours shift):
+  - **Black:** graduation cap, black t-shirt, black trousers, black slip dress, utility lighter, mini lighter, black tote, black screwdriver, black towel, black trainer, small pistol, pistol, chocolate bar.
+  - **Red:** red cap, red t-shirt, red trousers, red belted dress, red wine, red screwdriver, maroon screwdriver, red briefs, red towel, red camera, red flats (one side), Yummies bar.
+  - **Green:** bucket hat, green t-shirt, olive trousers, green dress, olive oil, green bra, green towel, green boot, Banjos crisps.
+  - **White:** white t-shirt, white trousers, white dress, tennis tote, white tote, white boxers, Game Boy, white towel, white smiley towel.
+  - **Yellow:** yellow cap, yellow t-shirt, yellow tote, mustard, yellow bra, yellow book, yellow phone, yellow shoe.
+  - **No colour:** chef's knife, hunting knife, folding knife, beanie, jeans, blue dress, purple lighter, blue lighter, blue tote, rum, water, green screwdriver, blue thong, piano book, baking book, ideas book, purple book, tablet, leather phone, laptop, long fish, fat fish, teddy camera, digital camera, blue buckle shoe, pipe bomb, dynamite, AK-47, gummy bottles.

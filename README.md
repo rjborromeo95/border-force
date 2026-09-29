@@ -11,12 +11,13 @@ See **RULES.md** for how to play.
 ## Uploading to GitHub from the browser
 
 GitHub's web uploader takes **at most 100 files per upload**. This repo has
-about 240 files, so it comes in four parts, each under 100:
+about 250 files, so it comes in five parts, each under 100:
 
-1. **part 1** — code, signs, sounds, icons (the shell)
-2. **part 2** — cards: books to fish
-3. **part 3** — cards: hats to t-shirts
-4. **part 4** — cards: totes to underwear, and the suitcases
+1. **part 1** — code, sounds, icons and the cover
+2. **part 2** — signs
+3. **part 3** — cards: books to fish
+4. **part 4** — cards: hats to t-shirts
+5. **part 5** — cards: totes to underwear, and the suitcases
 
 Unzip each part and drag its **contents** (the `assets` folder and any loose
 files) onto the repo's "Add file → Upload files" page, one part at a time,
@@ -38,6 +39,8 @@ file is uploaded it appears on the next visit.
     Each game picks 12 random tools and 48 random ordinary pieces (set by
     `permitted` / `restricted` in `GAMES.lean`), each packed random side up.
   - `GAMES.lean` — `bags: 10`, `fixedBag: 6` (six to a suitcase).
+  - `GAMES.leanPlain` — the same shift with the colour signs left off
+    (`COLOUR_SIGNS` in items.js, filtered out in `categoryList()`).
 - `assets/game.js`:
   - `GAMES.lean` — bag count and size.
   - `setUpBoard()` — shuffles the wall.
@@ -74,6 +77,8 @@ turning it over never changes its size. Signs are 240×240 transparent PNGs.
   folder.
 - **Guns** use `guns_ok` / `no_guns`.
 - **Snacks** use `snacks_allowed` / `no_snacks`.
+- **Glitter**, **Croissants** and **Hearts** use the `glitter_ok` / `no_glitter`,
+  `croissants_ok` / `no_croissants` and `heart_ok` / `no_heart` pairs.
 - **The two AK-47s** touched on their sheet and were split apart along the
   narrowest point between them.
 - **The dynamite** was drawn once, so its back is its mirror image. Replace
