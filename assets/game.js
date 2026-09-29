@@ -66,6 +66,10 @@ GAMES.lean = {
   noPass: true, autoOpen: true, skipOnWrong: true, lockstep: true,
   circulate: true, recircCap: 400
 };
+/* The same shift with the five colour signs taken off the wall: only what
+   things are, and what is on them, can get them confiscated. */
+GAMES.leanPlain = Object.assign({}, GAMES.lean, { key: 'leanPlain', name: 'Lean shift · no colours', noColours: true });
+
 
 let M = GAMES.standard;
 
@@ -2413,7 +2417,7 @@ function showMenu() {
 function startSeries(gameKey, best, goal) {
   M = GAMES[gameKey] || GAMES.standard;
   useWide(!!M.wide);
-  useLean(!!M.lean);
+  useLean(!!M.lean, !!M.noColours);
   tagCache = null;                  /* the board index differs per shift */
   setDeal(M.bags || M.perSide * 2, M.permitted, M.restricted, M.cap);
   seizeGoal = goal || 0;

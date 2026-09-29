@@ -945,3 +945,10 @@ body.compact.portrait .rotate[hidden]{display:flex !important}
 /* the rotate prompt wears the cover's colours too */
 body.compact.portrait .rotate{background:#1d1d1d;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 3px,transparent 3px 8px)}
 .rotate p{text-transform:uppercase;letter-spacing:.04em;border-bottom:3px solid #b41717;padding-bottom:.3rem}
+
+/* the second shift on the menu sits under the first, a little quieter */
+.menu-cover .mode-card-alt{border-top-color:#8a8a8a}
+.menu-cover .mode-card-alt .mode-name{font-size:1.35rem}
+/* a tall wall still fits the tool picker on screen */
+.light-inner{max-height:calc(100vh - 2rem);overflow-y:auto}
+.light-grid .light-pick img{max-width:60px}
