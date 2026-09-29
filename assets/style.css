@@ -952,3 +952,6 @@ body.compact.portrait .rotate{background:#1d1d1d;background-image:repeating-line
 /* a tall wall still fits the tool picker on screen */
 .light-inner{max-height:calc(100vh - 2rem);overflow-y:auto}
 .light-grid .light-pick img{max-width:60px}
+
+/* the fish that flops along a row of the wall */
+.wall-fish{position:fixed;z-index:130;pointer-events:none;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(0,0,0,.35))}

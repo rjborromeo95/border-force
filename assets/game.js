@@ -1742,15 +1742,104 @@ function useTool(kind, i) {
   const tool = TOOLS[kind];
   const rows = tool.reach(i);
   if (!rows.length) return rows;
+  /* note where every sign is and what it shows before anything moves, so the
+     bomb and the fish can animate from the old wall to the new one */
+  const before = wallSnapshot();
+  const rowIdx = rows.map(r => board.indexOf(r));
   tool.apply(rows);
   recomputeBoard();
   drawSigns();
+  if (kind === 'bomb') animateBomb(before);
+  if (kind === 'fish') animateFish(before, rowIdx);
   if (M.lean && !board.some(r => r.banned)) {
     wallBare = true;
     later(() => finish(), 900);        /* long enough to see the last sign go */
     paused = true;
   }
   return rows;
+}
+
+/* ---------- wall animations ----------
+   The bomb throws every sign into the air and drops each into its new square;
+   the fish flops along its row and each sign flips over as it passes. Both
+   start from a snapshot taken just before the tool was used, and both are
+   skipped for anyone who has asked their device for reduced motion. */
+const calm = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const signFace = (cat, banned) => 'assets/ui/signs/' + (banned ? cat.banned : cat.allowed);
+function wallEls() { return [].slice.call($('signRow').children); }
+function wallSnapshot() {
+  const els = wallEls();
+  return board.map((r, k) => ({ key: r.cat.key, cat: r.cat, banned: r.banned,
+                                rect: els[k] ? els[k].getBoundingClientRect() : null }));
+}
+
+function animateBomb(before) {
+  if (calm() || !$('signRow').animate) return;
+  const wall = $('signRow').closest('.notice') || $('signRow');
+  wall.animate([
+    { transform: 'translate(0,0)', filter: 'brightness(1)' },
+    { transform: 'translate(-6px,3px)', filter: 'brightness(1.45) sepia(.6) saturate(2.5) hue-rotate(-15deg)', offset: .08 },
+    { transform: 'translate(5px,-4px)', offset: .2 },
+    { transform: 'translate(-4px,2px)', filter: 'brightness(1)', offset: .34 },
+    { transform: 'translate(2px,-1px)', offset: .5 },
+    { transform: 'translate(0,0)', filter: 'brightness(1)' }
+  ], { duration: 700, easing: 'ease-out' });
+  const from = {}; before.forEach(b => { from[b.key] = b; });
+  wallEls().forEach((el, k) => {
+    const r = board[k], b = from[r.cat.key];
+    if (!b || !b.rect || r.stabbed) return;           /* a stabbed sign stays nailed to its square */
+    const now = el.getBoundingClientRect();
+    const dx = b.rect.left - now.left, dy = b.rect.top - now.top;
+    const img = el.querySelector('img');
+    if (img && b.banned !== r.banned) {               /* show the old colour until it lands */
+      img.src = signFace(r.cat, b.banned);
+      later(() => { img.src = signFace(r.cat, r.banned); }, 520);
+    }
+    el.style.position = 'relative'; el.style.zIndex = 2;
+    const spin = rnd(-220, 220), lift = rnd(40, 90);
+    const anim = el.animate([
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(0deg) scale(1)' },
+      { transform: 'translate(' + (dx * .5 + rnd(-30, 30)) + 'px,' + (dy * .5 - lift) + 'px) rotate(' + spin + 'deg) scale(1.35)', offset: .45 },
+      { transform: 'translate(0,0) rotate(0deg) scale(1)' }
+    ], { duration: rnd(850, 1150), delay: rnd(0, 140), easing: 'cubic-bezier(.3,.1,.25,1)', fill: 'backwards' });
+    anim.onfinish = () => { el.style.position = ''; el.style.zIndex = ''; };
+  });
+}
+
+function animateFish(before, idx) {
+  if (calm() || !$('signRow').animate) return;
+  const els = wallEls(); if (!idx.length || !els[idx[0]]) return;
+  idx.sort((a, b) => a - b);
+  const step = 130, turn = 170;
+  idx.forEach((k, j) => {
+    const el = els[k], img = el && el.querySelector('img'); if (!img) return;
+    const r = board[k];
+    img.src = signFace(r.cat, before[k].banned);      /* the old face first */
+    const t0 = 220 + j * step;
+    img.animate([{ transform: 'perspective(260px) rotateY(0deg)' }, { transform: 'perspective(260px) rotateY(90deg)' }],
+                { duration: turn, delay: t0, easing: 'ease-in', fill: 'forwards' })
+      .onfinish = () => {
+        img.src = signFace(r.cat, r.banned);
+        img.animate([{ transform: 'perspective(260px) rotateY(-90deg)' }, { transform: 'perspective(260px) rotateY(0deg)' }],
+                    { duration: turn, easing: 'ease-out', fill: 'forwards' });
+      };
+  });
+  /* the fish itself: flops in from the left of the row, hops over each sign and out the far side */
+  const first = els[idx[0]].getBoundingClientRect(), last = els[idx[idx.length - 1]].getBoundingClientRect();
+  /* the fish art sits in a tall card-shaped image, so size it by width */
+  const size = Math.max(60, first.width * 2.1), tall = size * 617 / 440;
+  const fish = document.createElement('img');
+  fish.src = 'assets/cards/lean_fish_0_a.png'; fish.alt = ''; fish.className = 'wall-fish';
+  fish.style.width = size + 'px'; fish.style.height = tall + 'px';
+  fish.style.left = (first.left - size * .8) + 'px';
+  fish.style.top = (first.top + first.height * .35 - tall / 2) + 'px';
+  document.body.appendChild(fish);
+  const span = last.right - first.left + size * 1.1, hops = idx.length + 1, frames = [];
+  for (let h = 0; h <= hops * 2; h++) {
+    const f = h / (hops * 2), up = h % 2 === 1;
+    frames.push({ transform: 'translate(' + (f * span) + 'px,' + (up ? -first.height * .45 : 0) + 'px) rotate(' + (up ? (h % 4 === 1 ? -35 : 35) : (h % 4 === 0 ? 10 : -10)) + 'deg) scaleX(-1)' });
+  }
+  fish.animate(frames, { duration: 220 + hops * step + turn, easing: 'linear' }).onfinish = () => fish.remove();
 }
 
 /* One picker for all three: the wall itself, big enough to aim at. With a
