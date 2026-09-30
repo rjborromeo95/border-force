@@ -39,6 +39,12 @@ file is uploaded it appears on the next visit.
     Each game picks 12 random tools and 48 random ordinary pieces (set by
     `permitted` / `restricted` in `GAMES.lean`), each packed random side up.
   - `GAMES.lean` — `bags: 10`, `fixedBag: 6` (six to a suitcase).
+  - `GAMES.quickPlain` — four suitcases, 8 tools, 16 everyday, no colours,
+    first to 10.
+  - `openingBans()` / `oppBan()` — each player bans one sign before the
+    shift; Officer B leans towards signs that catch a lot of the catalogue.
+  - `beginRound()` also ends a stalled shift: nothing seized for a full turn
+    of the belt and nobody holding a tool.
   - `GAMES.leanPlain` — the same shift with the colour signs left off
     (`COLOUR_SIGNS` in items.js, filtered out in `categoryList()`).
 - `assets/game.js`:

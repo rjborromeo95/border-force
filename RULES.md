@@ -33,6 +33,11 @@ and the colours Green, White, Red, Yellow and Black.
 **The no-colours shift** is the same game with the five colour signs taken off,
 leaving twenty-seven.
 
+**Opening bans.** Before the shift starts, each player chooses any one sign
+from the whole wall and turns it red. Nobody has seen inside the bags yet, so
+it is a bet on the catalogue, not on what is packed. You choose first, then
+Officer B's ban is revealed.
+
 Knives, Lighters, Screwdrivers, Fish, Bombs and Guns start red; everything else starts green. A
 piece is forbidden if anything on either side of it matches a red sign.
 
@@ -63,6 +68,17 @@ bag.
 Before each bag, Officer B stabs first, then you use your knife, lighter,
 screwdriver, fish and bomb in that order, then B uses theirs.
 
+## Game modes
+
+| Mode | Suitcases | Tools | Everyday items | Signs | Win at |
+|---|---|---|---|---|---|
+| Lean shift | 10 | 12 | 48 | 32 | 16 (or 20) |
+| Lean shift · no colours | 10 | 12 | 48 | 27 | 16 (or 20) |
+| Quick shift · no colours | 4 | 8 | 16 | 27 | 10 |
+
+Each suitcase holds six. The tools and everyday items are chosen at random
+from the full box every game.
+
 ## Scoring and the end
 
 Each forbidden piece you seize scores 1. Seize something legal and you sit out
@@ -72,6 +88,9 @@ The game ends when either:
 - somebody reaches **16** (or 20 in the longer game), or
 - the wall has **no red sign at all** — by screwdriver or fish. Whoever has seized more wins, and equal is a dead heat. Turning
   the last of the red green while you are ahead wins the game.
+- **nothing is left to seize**: a whole turn of the belt goes by with nobody
+  seizing anything and nobody holding a tool to change the wall. The most
+  seized wins.
 
 ## What counts as what
 

@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- ?v= is a cache buster. Bump it whenever style.css or game.js changes, or a
      browser (and Vercel's edge cache) will keep serving the old file. -->
-<link rel="stylesheet" href="assets/style.css?v=69">
+<link rel="stylesheet" href="assets/style.css?v=70">
 </head>
 <body>
 
@@ -39,7 +39,8 @@
         <span class="mode-body">Seize what the wall forbids; leave everything else, or sit out the next bag.
           A screwdriver turns a sign over, a fish turns a whole row, a bomb reshuffles the whole wall, a gun stops
           anyone using anything for a turn, a lighter sets a green sign alight, a knife stops a sign
-          turning at all. Turn the last red sign green and the shift ends — most seized wins.</span>
+          turning at all. Before the shift, you and Officer B each ban one sign of your choice. Turn the last red
+          sign green and the shift ends — most seized wins.</span>
         <span class="mode-picks">
           <button class="mode" type="button" data-game="lean" data-goal="16">First to 16</button>
           <button class="mode" type="button" data-game="lean" data-goal="20">First to 20</button>
@@ -54,6 +55,16 @@
         <span class="mode-picks">
           <button class="mode" type="button" data-game="leanPlain" data-goal="16">First to 16</button>
           <button class="mode" type="button" data-game="leanPlain" data-goal="20">First to 20</button>
+        </span>
+      </div>
+
+      <div class="mode-card mode-card-alt">
+        <span class="mode-name">Quick shift · no colours</span>
+        <span class="mode-tag">4 suitcases &middot; 24 pieces &middot; first to 10</span>
+        <span class="mode-body">A short game: four suitcases of six, eight tools and sixteen everyday things,
+          no colour signs.</span>
+        <span class="mode-picks">
+          <button class="mode" type="button" data-game="quickPlain" data-goal="10">First to 10</button>
         </span>
       </div>
 
@@ -220,8 +231,8 @@
   <p>Playtest rig, not the finished game. Every rule here is a proposal you can argue with.</p>
 </footer>
 
-<script src="assets/items.js?v=69"></script>
-<script src="assets/game.js?v=69"></script>
+<script src="assets/items.js?v=70"></script>
+<script src="assets/game.js?v=70"></script>
 <script>
 /* Offline + add-to-home-screen. Only registers where it can: a service worker
    needs https or localhost, so opening the file directly does nothing. */
