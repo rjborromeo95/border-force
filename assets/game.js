@@ -69,6 +69,10 @@ GAMES.lean = {
 /* The same shift with the five colour signs taken off the wall: only what
    things are, and what is on them, can get them confiscated. */
 GAMES.leanPlain = Object.assign({}, GAMES.lean, { key: 'leanPlain', name: 'Lean shift · no colours', noColours: true });
+/* A short two-bag-each shift for a quick game: four suitcases of six (eight
+   tools, sixteen everyday things), no colour signs, first to ten. */
+GAMES.quickPlain = Object.assign({}, GAMES.lean, { key: 'quickPlain', name: 'Quick shift · no colours',
+  noColours: true, bags: 4, perSide: 2, permitted: 16, restricted: 8 });
 
 
 let M = GAMES.standard;
@@ -512,6 +516,7 @@ function start() {
   you.screws = 0; opp.screws = 0;
   you.fishes = 0; opp.fishes = 0;
   you.bombs = 0; opp.bombs = 0;
+  lastHits = 0; quietRounds = 0; stalled = false;
   gunLock = false; gunLockNow = false;
   wallBare = false;
   $('tool').hidden = true;
@@ -1683,6 +1688,16 @@ const TOOLS = {
     apply: rows => { rows.forEach(r => { r.banned = true; r.lit = true; }); },
     said: (who, rows) => who + ' set a sign alight: no ' + names(rows)
   },
+  ban: {
+    count: 'bans', reach: (i) => { const r = board[i]; return r && !r.banned ? [r] : []; }, noSkip: true,
+    kicker: 'Before the shift', head: 'Ban something',
+    lede: 'Choose any sign on the wall to turn <strong>red</strong> for this shift. Officer B is choosing too \u2014 ' +
+          'you will see their ban once you have made yours. Nobody knows what is in the bags yet.',
+    skip: '',
+    hint: (r, reach) => reach.length ? 'Ban ' + names(reach) + '.' : r.cat.label + ' is already red.',
+    apply: rows => { rows.forEach(r => { r.banned = true; r.lit = true; }); },
+    said: (who, rows) => who + ' banned: no ' + names(rows)
+  },
   bomb: {
     count: 'bombs', reach: bombReach, noTarget: true,
     kicker: 'You took a bomb', head: 'Blow up the wall',
@@ -1869,6 +1884,7 @@ function offerTool(kind, then) {
       then();
     };
     $('toolSkip').onclick = () => { $('tool').hidden = true; paused = false; then(); };
+    $('toolSkip').hidden = false;
     $('tool').hidden = false;
     return;
   }
@@ -1911,6 +1927,7 @@ function offerTool(kind, then) {
   });
   say(null);
   $('toolSkip').onclick = () => done(null);
+  $('toolSkip').hidden = !!tool.noSkip;           /* a ban has to be made */
   $('tool').hidden = false;
 }
 
@@ -2007,8 +2024,15 @@ function oppTools() {
 /* Before a round: Officer B draws a knife first, where you can see it, then
    you get your knife, your lighter and your screwdriver in that order, then B
    uses theirs. A stab lasts until the end of the round it was made in. */
+let lastHits = 0, quietRounds = 0, stalled = false;
 function beginRound() {
   if (over || !M.lockstep) return;
+  if (M.lean) {
+    const hits = (you.hits || 0) + (opp.hits || 0);
+    quietRounds = hits === lastHits ? quietRounds + 1 : 0; lastHits = hits;
+    const holding = ['lights', 'screws', 'fishes', 'bombs'].some(k => (you[k] || 0) + (opp[k] || 0) > 0);
+    if (quietRounds > Math.ceil((M.bags || 2) / 2) && !holding) { stalled = true; finish(); return; }
+  }
   roundNo++;
   youDone = false; oppDone = false; roundGoing = true;
   board.forEach(r => { r.lit = false; });
@@ -2437,6 +2461,7 @@ function finish() {
   const roundLine = ys > os ? 'You win the round.' : ys < os ? 'Officer B wins the round.' : 'The round is a dead heat.';
   const why = !M.circulate ? ''
     : wallBare ? 'Every sign on the wall went green, so the shift stopped and the most seized wins. '
+    : stalled ? 'A whole turn of the belt went by with nothing left to seize, so the shift stopped and the most seized wins. '
     : (seizeGoal && (you.hits || 0) >= seizeGoal) ? 'You reached ' + seizeGoal + ' seized and the shift stopped. '
     : (seizeGoal && (opp.hits || 0) >= seizeGoal) ? 'Officer B reached ' + seizeGoal + ' seized and the shift stopped. '
     : recirc >= M.recircCap ? 'The bags went round until there was nothing left worth taking. '
@@ -2521,14 +2546,39 @@ function startSeries(gameKey, best, goal) {
   series.done = false;
   $('menu').hidden = true;
   start();
-  showBriefing();
+  openingBans(showBriefing);
+}
+
+/* ---------- opening bans ----------
+   Before a shift starts, each player chooses any sign on the wall and turns it
+   red. Nobody has seen the bags, so it is a bet on the catalogue, not on what
+   is packed. You choose first; Officer B has chosen at the same time and is
+   revealed after you. B leans towards signs that catch a lot of the whole
+   catalogue, with enough chance in it that it is not always the same sign. */
+function catalogueWeight(tag) {
+  let n = 0; LEAN_PIECES.forEach(p => { if (p.sides.some(sd => sd.tags.indexOf(tag) >= 0)) n++; });
+  return n;
+}
+function oppBan() {
+  const open = board.filter(r => !r.banned);
+  if (!open.length) return;
+  const w = open.map(r => Math.pow(catalogueWeight(r.cat.tag), 2) + 1);
+  let pick = Math.random() * w.reduce((a, b) => a + b, 0), k = 0;
+  while (pick > w[k] && k < w.length - 1) { pick -= w[k]; k++; }
+  TOOLS.ban.apply([open[k]]); recomputeBoard(); drawSigns();
+  toast(TOOLS.ban.said('Officer B', [open[k]]), false);
+}
+function openingBans(then) {
+  if (!M.lean) { then(); return; }
+  you.bans = 1;
+  offerTool('ban', () => { oppBan(); then(); });
 }
 
 function nextRound() {
   series.round++;
   $('result').hidden = true;
   start();
-  showBriefing();
+  openingBans(showBriefing);
 }
 
 /* A drawn round goes to nobody. A match that ends level on rounds is settled
