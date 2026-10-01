@@ -23,15 +23,15 @@ every time the bag is opened.
 
 ## The wall
 
-Thirty-two signs in a grid five across — rows A, B, C… from the top, the last
+Thirty-one signs in a grid five across — rows A, B, C… from the top, the last
 row short — **shuffled into a new layout every game**: Knives, Lighters,
 Screwdrivers, Fish, Bombs, Guns, Hats, T-shirts, Trousers, Dresses, Tote bags,
-Bottles, Books, Underwear, Devices, Towels, Cameras, Shoes, Snacks,
+Bottles, Books, Underwear, Devices (phones, tablets and cameras), Towels, Shoes, Snacks,
 Instruments, Belts, Teddies, Smiley faces, Balls, Glitter, Croissants, Hearts,
 and the colours Green, White, Red, Yellow and Black.
 
 **The no-colours shift** is the same game with the five colour signs taken off,
-leaving twenty-seven.
+leaving twenty-six.
 
 **Opening bans.** Before the shift starts, each player chooses any one sign
 from the whole wall and turns it red. Nobody has seen inside the bags yet, so
@@ -72,9 +72,9 @@ screwdriver, fish and bomb in that order, then B uses theirs.
 
 | Mode | Suitcases | Tools | Everyday items | Signs | Win at |
 |---|---|---|---|---|---|
-| Lean shift | 10 | 12 | 48 | 32 | 16 (or 20) |
-| Lean shift · no colours | 10 | 12 | 48 | 27 | 16 (or 20) |
-| Quick shift · no colours | 4 | 8 | 16 | 27 | 10 |
+| Lean shift | 10 | 12 | 48 | 31 | 16 (or 20) |
+| Lean shift · no colours | 10 | 12 | 48 | 26 | 16 (or 20) |
+| Quick shift · no colours | 4 | 8 | 16 | 26 | 10 |
 
 Each suitcase holds six. The tools and everyday items are chosen at random
 from the full box every game.
@@ -97,16 +97,17 @@ The game ends when either:
 Where a sign is caught from one side of a piece only, that is marked. A piece is
 forbidden if either side matches a red sign.
 
-- **Smiley faces:** beanie (front), blue dress (front), black tote, laptop (back), white smiley towel (back), AK-47 (front).
-- **Hearts:** white t-shirt (front), purple book (back), tablet (back), teddy camera (front), yellow shoe (front), pistol (front).
+- **Smiley faces:** beanie (front), black trousers, blue dress (front), black tote, red wine (front), mustard (back), laptop (back), white smiley towel (back), AK-47 (front).
+- **Hearts:** white t-shirt (front), tennis tote (back), water (back), white boxers (back), purple book (back), tablet (back), teddy camera (front), yellow shoe (front), pistol (front).
 - **Glitter:** red cap (front), white trousers (back), blue tote, blue thong (front), Game Boy (back), black trainer.
 - **Croissants:** jeans (back), yellow bra (back), baking book (back), green towel (front).
-- **Instruments:** beanie (back), black t-shirt (back), piano book (front), red camera (back), green boot (front), Banjos crisps.
+- **Instruments:** beanie (back), black t-shirt (back), yellow tote (front), piano book (front), red camera (back), green boot (front), Banjos crisps.
 - **Teddies:** green t-shirt (front), white dress (front), red briefs (front), yellow book (front), teddy camera.
-- **Balls:** red t-shirt (front), tennis tote (front), yellow phone (back), red towel (front).
-- **Belts:** bucket hat, red belted dress, leather phone (front), blue buckle shoe.
+- **Balls:** yellow cap (front), red t-shirt (front), tennis tote (front), rum (front), yellow phone (back), red towel (front).
+- **Belts:** bucket hat, olive trousers, red trousers, red belted dress, green bra (back), leather phone (front), blue buckle shoe.
 - **Bottles (beyond the bottles themselves):** gummy bottles.
-- **Colours** (not used in the no-colours shift):
+- **Devices:** yellow phone, Game Boy, tablet, leather phone, laptop, teddy camera, red camera, digital camera.
+- **Colours** (not used in the no-colours shifts):
   - **Black:** graduation cap, black t-shirt, black trousers, black slip dress, utility lighter, mini lighter, black tote, black screwdriver, black towel, black trainer, small pistol, pistol, chocolate bar.
   - **Red:** red cap, red t-shirt, red trousers, red belted dress, red wine, red screwdriver, maroon screwdriver, red briefs, red towel, red camera, red flats (one side), Yummies bar.
   - **Green:** bucket hat, green t-shirt, olive trousers, green dress, olive oil, green bra, green towel, green boot, Banjos crisps.
