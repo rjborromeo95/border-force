@@ -16,7 +16,7 @@ about 250 files, so it comes in five parts, each under 100:
 1. **part 1** — code, sounds, icons and the cover
 2. **part 2** — signs
 3. **part 3** — cards: books to fish
-4. **part 4** — cards: hats to t-shirts
+4. **part 4** — cards: hats to toothbrushes
 5. **part 5** — cards: totes to underwear, and the suitcases
 
 Unzip each part and drag its **contents** (the `assets` folder and any loose
