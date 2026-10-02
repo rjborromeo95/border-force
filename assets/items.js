@@ -886,13 +886,13 @@ const LEAN_PIECES = [
   /* Tote bags. The black one has a smiley on both faces. */
   { key: 'lean_totes_0',     name: "Tennis tote",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_0_a.png', tags: ['tote', 'white', 'ball'] },
-             { img: 'lean_totes_0_b.png', tags: ['tote', 'white', 'heart'] } ] },
+             { img: 'lean_totes_0_b.png', tags: ['tote', 'white'] } ] },
   { key: 'lean_totes_1',     name: "Black tote",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_1_a.png', tags: ['tote', 'black', 'smiley'] },
              { img: 'lean_totes_1_b.png', tags: ['tote', 'black', 'smiley'] } ] },
   { key: 'lean_totes_2',     name: "White tote",       sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_2_a.png', tags: ['tote', 'white'] },
-             { img: 'lean_totes_2_b.png', tags: ['tote', 'white'] } ] },
+             { img: 'lean_totes_2_b.png', tags: ['tote', 'white', 'heart'] } ] },
   { key: 'lean_totes_3',     name: "Yellow tote",      sound: 'cloth',  copies: 1,
     sides: [ { img: 'lean_totes_3_a.png', tags: ['tote', 'yellow', 'instruments'] },
              { img: 'lean_totes_3_b.png', tags: ['tote', 'yellow'] } ] },
@@ -1094,7 +1094,26 @@ const LEAN_PIECES = [
 
   { key: 'lean_snacks_3', name: "Chocolate bar", sound: 'rustle', copies: 1,
     sides: [ { img: 'lean_snacks_3_a.png', tags: ['snack', 'black'] },
-             { img: 'lean_snacks_3_b.png', tags: ['snack', 'black'] } ] }
+             { img: 'lean_snacks_3_b.png', tags: ['snack', 'black'] } ] },
+
+  /* Toothbrushes. Every one carries something else as well: glitter and a
+     smiley, a belt (with a teddy patch on the front), a croissant, a ball, and
+     a camera — which makes it a device — with a heart on the back. */
+  { key: 'lean_toothbrushes_0', name: "Glitter toothbrush", sound: 'plastic', copies: 1,
+    sides: [ { img: 'lean_toothbrushes_0_a.png', tags: ['toothbrush', 'yellow', 'glitter', 'smiley'] },
+             { img: 'lean_toothbrushes_0_b.png', tags: ['toothbrush', 'yellow', 'glitter', 'smiley'] } ] },
+  { key: 'lean_toothbrushes_1', name: "Belt toothbrush", sound: 'plastic', copies: 1,
+    sides: [ { img: 'lean_toothbrushes_1_a.png', tags: ['toothbrush', 'belt', 'teddy'] },
+             { img: 'lean_toothbrushes_1_b.png', tags: ['toothbrush', 'belt'] } ] },
+  { key: 'lean_toothbrushes_2', name: "Croissant toothbrush", sound: 'plastic', copies: 1,
+    sides: [ { img: 'lean_toothbrushes_2_a.png', tags: ['toothbrush', 'croissant'] },
+             { img: 'lean_toothbrushes_2_b.png', tags: ['toothbrush', 'croissant'] } ] },
+  { key: 'lean_toothbrushes_3', name: "Ball toothbrush", sound: 'plastic', copies: 1,
+    sides: [ { img: 'lean_toothbrushes_3_a.png', tags: ['toothbrush', 'ball'] },
+             { img: 'lean_toothbrushes_3_b.png', tags: ['toothbrush', 'ball'] } ] },
+  { key: 'lean_toothbrushes_4', name: "Camera toothbrush", sound: 'plastic', copies: 1,
+    sides: [ { img: 'lean_toothbrushes_4_a.png', tags: ['toothbrush', 'device'] },
+             { img: 'lean_toothbrushes_4_b.png', tags: ['toothbrush', 'device', 'heart'] } ] }
 ];
 
 /* The pieces that do something when you take them. They are never the ones
@@ -1139,10 +1158,11 @@ const LEAN_CATEGORIES = [
   { key: 'shoe',        label: 'Shoes',        tag: 'shoe',        allowed: 'shoes_allowed.png',        banned: 'no_shoes.png',         start: false },
   { key: 'bomb',        label: 'Bombs',        tag: 'bomb',        allowed: 'bombs_ok.png',             banned: 'no_bombs.png',         start: true },
   { key: 'gun',         label: 'Guns',         tag: 'gun',         allowed: 'guns_ok.png',              banned: 'no_guns.png',          start: true },
+  { key: 'toothbrush',  label: 'Toothbrushes', tag: 'toothbrush',  allowed: 'toothbrush_allowed.png',   banned: 'no_toothbrushes.png',  start: false },
   { key: 'snack',       label: 'Snacks',       tag: 'snack',       allowed: 'snacks_allowed.png',       banned: 'no_snacks.png',        start: false },
   { key: 'glitter',     label: 'Glitter',      tag: 'glitter',     allowed: 'glitter_ok.png',           banned: 'no_glitter.png',       start: false },
   { key: 'croissant',   label: 'Croissants',   tag: 'croissant',   allowed: 'croissants_ok.png',        banned: 'no_croissants.png',    start: false },
-  { key: 'heart',       label: 'Hearts',       tag: 'heart',       allowed: 'heart_ok.png',             banned: 'no_heart.png',         start: false }
+  { key: 'heart',       label: 'Hearts',       tag: 'heart',       allowed: 'heart_ok.png',             banned: 'no_heart.png',         start: false },
 ];
 
 /* the colour signs, which the "no colours" shift leaves off the wall */
